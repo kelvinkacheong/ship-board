@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-09T04:06:46.149Z",
+  "lastUpdated": "2026-10-09T04:07:00.370Z",
   "tasks": [
     {
       "id": "task-001",
@@ -29,7 +29,7 @@
       "tags": [
         "CBRE"
       ],
-      "status": "pending_further_actions",
+      "status": "in_progress",
       "progress": 60,
       "assignees": [
         {
@@ -40,7 +40,7 @@
       ],
       "dueDate": "2026-11-01",
       "note": null,
-      "order": 0
+      "order": 1
     },
     {
       "id": "task-003",
@@ -59,7 +59,7 @@
       ],
       "dueDate": "2026-10-09",
       "note": null,
-      "order": 1
+      "order": 0
     },
     {
       "id": "task-004",

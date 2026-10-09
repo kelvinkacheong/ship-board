@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ship Lead · Board</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --border: #e4e7ec;
+    --text: #1f2328;
+    --muted: #667085;
+    --pending: #98a2b3;
+    --assigned: #7a5af8;
+    --progress: #2e90fa;
+    --blocked: #f04438;
+    --shipped: #12b76a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header .meta {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(220px, 1fr));
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .column {
+    background: #eef1f6;
+    border-radius: 12px;
+    padding: 10px;
+    min-height: 420px;
+  }
+  .column-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 6px 12px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .column-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .count {
+    margin-left: auto;
+    background: rgba(0,0,0,0.06);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 2px 8px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+    margin-bottom: 10px;
+  }
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(16,24,40,0.08);
+  }
+  .tag-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 2px 7px;
+  }
+  .tag.client { background: #eef4ff; color: #3538cd; }
+  .tag.type { background: #f4f3ff; color: #5925dc; }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+  .progress {
+    height: 6px;
+    background: #e4e7ec;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .progress > span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #2e90fa, #53b1fd);
+    border-radius: 999px;
+  }
+  .progress-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .assignee {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #b692f6;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+  }
+  .due {
+    font-size: 11px;
+    color: #b54708;
+    background: #fffaeb;
+    border: 1px solid #fedf89;
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-weight: 600;
+  }
+  .empty {
+    border: 1px dashed #d0d5dd;
+    border-radius: 10px;
+    color: #98a2b3;
+    font-size: 12px;
+    text-align: center;
+    padding: 28px 12px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Ship Lead · Board</h1>
+    <div class="meta">4 tasks · Updated just now</div>
+  </header>
+
+  <div class="board">
+    <section class="column">
+      <div class="column-header">
+        <span class="dot" style="background:var(--pending)"></span>
+        <span class="column-title">Pending</span>
+        <span class="count">1</span>
+      </div>
+      <article class="card">
+        <div class="tag-row">
+          <span class="tag client">Backend</span>
+          <span class="tag client" style="background:#f4f3ff;color:#5925dc">Portal</span>
+        </div>
+        <h3>Fix happening creation end time &gt; start time bug</h3>
+        <div class="progress-label" style="margin-bottom:10px">BAU · whenever we have time</div>
+        <div class="footer">
+          <div class="assignee">
+            <span class="avatar" style="background:#2e90fa">K</span>
+            Kelvin
+          </div>
+          <span class="due" style="color:#667085;background:#f2f4f7;border-color:#d0d5dd">No due date</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="column">
+      <div class="column-header">
+        <span class="dot" style="background:var(--assigned)"></span>
+        <span class="column-title">Assigned</span>
+        <span class="count">0</span>
+      </div>
+      <div class="empty">No tasks</div>
+    </section>
+
+    <section class="column">
+      <div class="column-header">
+        <span class="dot" style="background:var(--progress)"></span>
+        <span class="column-title">In progress</span>
+        <span class="count">2</span>
+      </div>
+      <article class="card">
+        <div class="tag-row">
+          <span class="tag client">CBRE</span>
+        </div>
+        <h3>Corporate client portal — initial setup</h3>
+        <div class="progress"><span style="width:60%"></span></div>
+        <div class="progress-label">60% complete</div>
+        <div class="footer">
+          <div class="assignee">
+            <span class="avatar">M</span>
+            Maya
+          </div>
+          <span class="due">Nov 1</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="tag-row">
+          <span class="tag client">App</span>
+        </div>
+        <h3>Add year-end challenge block to show shareable_credits</h3>
+        <div class="progress"><span style="width:50%"></span></div>
+        <div class="progress-label">50% complete</div>
+        <div class="footer">
+          <div class="assignee">
+            <span class="avatar" style="background:#12b76a">R</span>
+            Rachel
+          </div>
+          <span class="due">Oct 9</span>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="column">
+      <div class="column-header">
+        <span class="dot" style="background:var(--blocked)"></span>
+        <span class="column-title">Blocked</span>
+        <span class="count">0</span>
+      </div>
+      <div class="empty">No tasks</div>
+    </section>
+
+    <section class="column">
+      <div class="column-header">
+        <span class="dot" style="background:var(--shipped)"></span>
+        <span class="column-title">Shipped</span>
+        <span class="count">1</span>
+      </div>
+      <article class="card">
+        <div class="tag-row">
+          <span class="tag client">Backend</span>
+        </div>
+        <h3>Add shareable_credits fields in Users table</h3>
+        <div class="progress"><span style="width:100%;background:linear-gradient(90deg,#12b76a,#32d583)"></span></div>
+        <div class="progress-label">Done</div>
+        <div class="footer">
+          <div class="assignee">
+            <span class="avatar" style="background:#12b76a">R</span>
+            Rachel
+          </div>
+          <span class="due" style="color:#027a48;background:#ecfdf3;border-color:#a6f4c5">Oct 9</span>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

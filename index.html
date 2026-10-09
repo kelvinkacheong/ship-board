@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ship Lead · Board</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232e90fa%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237a5af8%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22url%28%23g%29%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2243%22%20font-family%3D%22Inter%2CSegoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3ESL%3C/text%3E%3C/svg%3E" />
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
 <style>
   :root {
     --bg: #f7f8fa;
@@ -17,6 +18,7 @@
     --progress: #2e90fa;
     --blocked: #f79009;
     --shipped: #12b76a;
+    --primary: #2e90fa;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -31,16 +33,39 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
   }
   header h1 {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
   header .meta {
     font-size: 13px;
     color: var(--muted);
   }
+  .edit-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+  .edit-btn:hover { background: #f3f4f6; }
+  .edit-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
   .board {
     display: grid;
     grid-template-columns: repeat(5, minmax(220px, 1fr));
@@ -79,6 +104,9 @@
     border-radius: 999px;
     padding: 2px 8px;
   }
+  .card-list {
+    min-height: 50px;
+  }
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -86,42 +114,52 @@
     padding: 12px;
     box-shadow: 0 1px 2px rgba(16,24,40,0.04);
     margin-bottom: 10px;
+    cursor: default;
+    transition: box-shadow 0.15s;
   }
-  .card:hover {
-    box-shadow: 0 4px 12px rgba(16,24,40,0.08);
-  }
+  .edit-mode .card { cursor: grab; }
+  .edit-mode .card:active { cursor: grabbing; }
+  .card:hover { box-shadow: 0 4px 12px rgba(16,24,40,0.08); }
+  .card.sortable-ghost { opacity: 0.4; }
+  .card.sortable-drag { box-shadow: 0 8px 24px rgba(16,24,40,0.15); }
   .tag-row {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
     margin-bottom: 8px;
   }
+  .tag-row:empty { display: none; }
   .tag {
     font-size: 11px;
     font-weight: 600;
     border-radius: 6px;
     padding: 2px 7px;
+    background: #eef4ff;
+    color: #3538cd;
   }
-  .tag.client { background: #eef4ff; color: #3538cd; }
-  .tag.type { background: #f4f3ff; color: #5925dc; }
+  .tag.portal { background: #f4f3ff; color: #5925dc; }
   .card h3 {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.35;
     margin-bottom: 10px;
   }
-  .progress {
+  .progress-bar {
     height: 6px;
     background: #e4e7ec;
     border-radius: 999px;
     overflow: hidden;
     margin-bottom: 6px;
   }
-  .progress > span {
+  .progress-bar > span {
     display: block;
     height: 100%;
     background: linear-gradient(90deg, #2e90fa, #53b1fd);
     border-radius: 999px;
+    transition: width 0.3s;
+  }
+  .progress-bar.shipped > span {
+    background: linear-gradient(90deg, #12b76a, #32d583);
   }
   .progress-label {
     font-size: 11px;
@@ -152,7 +190,9 @@
     font-weight: 700;
     display: grid;
     place-items: center;
+    flex-shrink: 0;
   }
+  .avatar + .avatar { margin-left: -10px; border: 2px solid #fff; }
   .due {
     font-size: 11px;
     color: #b54708;
@@ -161,7 +201,10 @@
     border-radius: 6px;
     padding: 2px 6px;
     font-weight: 600;
+    white-space: nowrap;
   }
+  .due.none { color: #667085; background: #f2f4f7; border-color: #d0d5dd; }
+  .due.done { color: #027a48; background: #ecfdf3; border-color: #a6f4c5; }
   .empty {
     border: 1px dashed #d0d5dd;
     border-radius: 10px;
@@ -170,130 +213,663 @@
     text-align: center;
     padding: 28px 12px;
   }
+  .add-task-btn {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px dashed #d0d5dd;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .edit-mode .add-task-btn { display: block; }
+  .add-task-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(46,144,250,0.05); }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  .modal-header {
+    padding: 20px 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-header h2 { font-size: 18px; font-weight: 600; }
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--muted);
+    line-height: 1;
+  }
+  .modal-body { padding: 20px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(46,144,250,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 60px; }
+  .form-group small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+  .slider-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .slider-container input[type="range"] {
+    flex: 1;
+    padding: 0;
+    height: 6px;
+    -webkit-appearance: none;
+    background: #e4e7ec;
+    border-radius: 999px;
+    border: none;
+  }
+  .slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .slider-value {
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: right;
+  }
+  .modal-footer {
+    padding: 0 20px 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+  }
+  .btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: #1a7ae8; }
+  .btn-secondary { background: var(--surface); border-color: var(--border); color: var(--text); }
+  .btn-secondary:hover { background: #f3f4f6; }
+  .btn-danger { background: #fee4e2; color: #b42318; border-color: #fecdca; }
+  .btn-danger:hover { background: #fecdca; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.saving { background: #eef4ff; color: #3538cd; }
+  .toast.saved { background: #ecfdf3; color: #027a48; }
+  .toast.error { background: #fee4e2; color: #b42318; }
+
+  /* Token setup modal */
+  .token-info {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .token-info a { color: var(--primary); }
+  .token-info ol { margin: 8px 0 0 20px; }
+  .token-info li { margin-bottom: 4px; }
+
+  @media (max-width: 900px) {
+    .board { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  }
 </style>
 </head>
 <body>
   <header>
     <h1>Ship Lead · Board</h1>
-    <div class="meta">5 tasks · Updated just now</div>
+    <div class="header-right">
+      <div class="meta" id="meta">Loading...</div>
+      <button class="edit-btn" id="editBtn" title="Toggle edit mode">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a2.83 2.83 0 1 1 4 4L5 18l-4 1 1-4Z"/></svg>
+        Edit
+      </button>
+    </div>
   </header>
 
-  <div class="board">
-    <section class="column">
-      <div class="column-header">
-        <span class="dot" style="background:var(--pending)"></span>
-        <span class="column-title">Pending</span>
-        <span class="count">0</span>
-      </div>
-      <div class="empty">No tasks</div>
-    </section>
+  <div class="board" id="board"></div>
 
-    <section class="column">
-      <div class="column-header">
-        <span class="dot" style="background:var(--assigned)"></span>
-        <span class="column-title">Assigned</span>
-        <span class="count">1</span>
+  <!-- Task Edit Modal -->
+  <div class="modal-overlay" id="taskModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Edit Task</h2>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
       </div>
-      <article class="card">
-        <h3>Look into track-A checkout package</h3>
-        <div class="progress-label" style="margin-bottom:10px">Not started</div>
-        <div class="footer">
-          <div class="assignee">
-            <span class="avatar" style="background:#2e90fa">K</span>
-            <span class="avatar" style="background:#f79009;margin-left:-10px;border:2px solid #fff">N</span>
-            Kelvin, Nemuel
-          </div>
-          <span class="due">Oct 13</span>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="taskTitle">Title</label>
+          <input type="text" id="taskTitle" placeholder="Task title">
         </div>
-      </article>
-    </section>
-
-    <section class="column">
-      <div class="column-header">
-        <span class="dot" style="background:var(--progress)"></span>
-        <span class="column-title">In progress</span>
-        <span class="count">3</span>
+        <div class="form-group">
+          <label for="taskTags">Tags (comma-separated)</label>
+          <input type="text" id="taskTags" placeholder="e.g. Backend, Portal">
+        </div>
+        <div class="form-group">
+          <label for="taskStatus">Status</label>
+          <select id="taskStatus">
+            <option value="pending">Pending</option>
+            <option value="assigned">Assigned</option>
+            <option value="in_progress">In progress</option>
+            <option value="pending_further_actions">Pending further actions</option>
+            <option value="shipped">Shipped</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Progress</label>
+          <div class="slider-container">
+            <input type="range" id="taskProgress" min="0" max="100" value="0">
+            <span class="slider-value" id="progressValue">0%</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="taskAssignees">Assignees (format: Name:Initial:Color, comma-separated)</label>
+          <input type="text" id="taskAssignees" placeholder="e.g. Kelvin:K:#2e90fa, Maya:M:#b692f6">
+          <small>Color is optional (e.g. Kelvin:K)</small>
+        </div>
+        <div class="form-group">
+          <label for="taskDue">Due Date</label>
+          <input type="date" id="taskDue">
+        </div>
+        <div class="form-group">
+          <label for="taskNote">Note</label>
+          <textarea id="taskNote" placeholder="e.g. BAU, Low priority"></textarea>
+        </div>
       </div>
-      <article class="card">
-        <div class="tag-row">
-          <span class="tag client">CBRE</span>
+      <div class="modal-footer">
+        <button class="btn btn-danger" id="deleteBtn" onclick="deleteTask()">Delete</button>
+        <div>
+          <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="saveTask()">Save</button>
         </div>
-        <h3>Corporate client portal — initial setup</h3>
-        <div class="progress"><span style="width:60%"></span></div>
-        <div class="progress-label">60% complete</div>
-        <div class="footer">
-          <div class="assignee">
-            <span class="avatar">M</span>
-            Maya
-          </div>
-          <span class="due">Nov 1</span>
-        </div>
-      </article>
-      <article class="card">
-        <div class="tag-row">
-          <span class="tag client">App</span>
-        </div>
-        <h3>Add year-end challenge block to show shareable_credits</h3>
-        <div class="progress"><span style="width:50%"></span></div>
-        <div class="progress-label">50% complete</div>
-        <div class="footer">
-          <div class="assignee">
-            <span class="avatar" style="background:#12b76a">R</span>
-            Rachel
-          </div>
-          <span class="due">Oct 9</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tag-row">
-          <span class="tag client">Backend</span>
-          <span class="tag client" style="background:#f4f3ff;color:#5925dc">Portal</span>
-        </div>
-        <h3>Fix happening creation end time &gt; start time bug</h3>
-        <div class="progress"><span style="width:40%"></span></div>
-        <div class="progress-label">40% complete · BAU</div>
-        <div class="footer">
-          <div class="assignee">
-            <span class="avatar" style="background:#2e90fa">K</span>
-            Kelvin
-          </div>
-          <span class="due" style="color:#667085;background:#f2f4f7;border-color:#d0d5dd">No due date</span>
-        </div>
-      </article>
-    </section>
-
-    <section class="column">
-      <div class="column-header">
-        <span class="dot" style="background:var(--blocked)"></span>
-        <span class="column-title">Pending further actions</span>
-        <span class="count">0</span>
       </div>
-      <div class="empty">No tasks</div>
-    </section>
-
-    <section class="column">
-      <div class="column-header">
-        <span class="dot" style="background:var(--shipped)"></span>
-        <span class="column-title">Shipped</span>
-        <span class="count">1</span>
-      </div>
-      <article class="card">
-        <div class="tag-row">
-          <span class="tag client">Backend</span>
-        </div>
-        <h3>Add shareable_credits fields in Users table</h3>
-        <div class="progress"><span style="width:100%;background:linear-gradient(90deg,#12b76a,#32d583)"></span></div>
-        <div class="progress-label">Done</div>
-        <div class="footer">
-          <div class="assignee">
-            <span class="avatar" style="background:#12b76a">R</span>
-            Rachel
-          </div>
-          <span class="due" style="color:#027a48;background:#ecfdf3;border-color:#a6f4c5">Oct 9</span>
-        </div>
-      </article>
-    </section>
+    </div>
   </div>
+
+  <!-- Token Setup Modal -->
+  <div class="modal-overlay" id="tokenModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Edit Mode Setup</h2>
+        <button class="modal-close" onclick="closeTokenModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="token-info">
+          <strong>To edit tasks, you need a GitHub Personal Access Token.</strong>
+          <ol>
+            <li>Go to <a href="https://github.com/settings/tokens?type=beta" target="_blank">GitHub Fine-grained Tokens</a></li>
+            <li>Click "Generate new token"</li>
+            <li>Name it (e.g. "Ship Board Editor")</li>
+            <li>Set repository access to "Only select repositories" → select <strong>kelvinkacheong/ship-board</strong></li>
+            <li>Under Permissions → Repository permissions → Contents: select <strong>Read and write</strong></li>
+            <li>Generate and copy the token</li>
+          </ol>
+          <p style="margin-top:8px">Your token is stored only in your browser's localStorage and never sent anywhere except GitHub's API.</p>
+        </div>
+        <div class="form-group">
+          <label for="tokenInput">GitHub Token</label>
+          <input type="password" id="tokenInput" placeholder="github_pat_...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeTokenModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveToken()">Enable Edit Mode</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const REPO_OWNER = 'kelvinkacheong';
+const REPO_NAME = 'ship-board';
+const TASKS_FILE = 'tasks.json';
+const COLUMNS = [
+  { id: 'pending', title: 'Pending', color: 'var(--pending)' },
+  { id: 'assigned', title: 'Assigned', color: 'var(--assigned)' },
+  { id: 'in_progress', title: 'In progress', color: 'var(--progress)' },
+  { id: 'pending_further_actions', title: 'Pending further actions', color: 'var(--blocked)' },
+  { id: 'shipped', title: 'Shipped', color: 'var(--shipped)' }
+];
+
+let tasksData = { lastUpdated: null, tasks: [] };
+let currentSha = null;
+let editMode = false;
+let editingTaskId = null;
+let sortables = [];
+
+async function fetchTasks() {
+  try {
+    const res = await fetch(`tasks.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error('Failed to load tasks');
+    tasksData = await res.json();
+    renderBoard();
+  } catch (e) {
+    console.error(e);
+    showToast('Failed to load tasks', 'error');
+  }
+}
+
+function renderBoard() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  sortables.forEach(s => s.destroy());
+  sortables = [];
+
+  COLUMNS.forEach(col => {
+    const tasks = tasksData.tasks
+      .filter(t => t.status === col.id)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    
+    const section = document.createElement('section');
+    section.className = 'column';
+    section.innerHTML = `
+      <div class="column-header">
+        <span class="dot" style="background:${col.color}"></span>
+        <span class="column-title">${col.title}</span>
+        <span class="count">${tasks.length}</span>
+      </div>
+      <div class="card-list" data-status="${col.id}">
+        ${tasks.length === 0 && !editMode ? '<div class="empty">No tasks</div>' : ''}
+        ${tasks.map(t => renderCard(t)).join('')}
+      </div>
+      <button class="add-task-btn" onclick="addTask('${col.id}')">+ Add task</button>
+    `;
+    board.appendChild(section);
+
+    if (editMode) {
+      const list = section.querySelector('.card-list');
+      const sortable = new Sortable(list, {
+        group: 'tasks',
+        animation: 150,
+        ghostClass: 'sortable-ghost',
+        dragClass: 'sortable-drag',
+        onEnd: handleDragEnd
+      });
+      sortables.push(sortable);
+    }
+  });
+
+  updateMeta();
+}
+
+function renderCard(task) {
+  const tagsHtml = task.tags.map(t => 
+    `<span class="tag${t.toLowerCase() === 'portal' ? ' portal' : ''}">${escapeHtml(t)}</span>`
+  ).join('');
+
+  const assigneesHtml = task.assignees.map(a => 
+    `<span class="avatar" style="background:${a.color || '#b692f6'}">${escapeHtml(a.initial)}</span>`
+  ).join('');
+  const assigneeNames = task.assignees.map(a => a.name).join(', ');
+
+  let progressLabel = '';
+  if (task.status === 'shipped' || task.progress === 100) {
+    progressLabel = 'Done';
+  } else if (task.progress === 0) {
+    progressLabel = 'Not started';
+  } else {
+    progressLabel = `${task.progress}% complete`;
+  }
+  if (task.note) progressLabel += ` · ${escapeHtml(task.note)}`;
+
+  let dueHtml = '';
+  if (task.dueDate) {
+    const d = new Date(task.dueDate);
+    const formatted = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const isShipped = task.status === 'shipped';
+    dueHtml = `<span class="due${isShipped ? ' done' : ''}">${formatted}</span>`;
+  } else {
+    dueHtml = '<span class="due none">No due date</span>';
+  }
+
+  const showProgress = task.progress > 0 || task.status === 'in_progress' || task.status === 'shipped';
+
+  return `
+    <article class="card" data-id="${task.id}" onclick="openTask('${task.id}')">
+      <div class="tag-row">${tagsHtml}</div>
+      <h3>${escapeHtml(task.title)}</h3>
+      ${showProgress ? `<div class="progress-bar${task.status === 'shipped' ? ' shipped' : ''}"><span style="width:${task.progress}%"></span></div>` : ''}
+      <div class="progress-label">${progressLabel}</div>
+      <div class="footer">
+        <div class="assignee">${assigneesHtml} ${escapeHtml(assigneeNames)}</div>
+        ${dueHtml}
+      </div>
+    </article>
+  `;
+}
+
+function updateMeta() {
+  const count = tasksData.tasks.length;
+  let timeStr = 'Updated just now';
+  if (tasksData.lastUpdated) {
+    const d = new Date(tasksData.lastUpdated);
+    timeStr = `Updated ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} at ${d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+  }
+  document.getElementById('meta').textContent = `${count} task${count !== 1 ? 's' : ''} · ${timeStr}`;
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// Edit mode
+document.getElementById('editBtn').addEventListener('click', toggleEditMode);
+
+function toggleEditMode() {
+  const token = localStorage.getItem('gh_token');
+  if (!editMode && !token) {
+    document.getElementById('tokenModal').classList.add('show');
+    return;
+  }
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  document.getElementById('editBtn').classList.toggle('active', editMode);
+  document.getElementById('editBtn').innerHTML = editMode 
+    ? '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Done'
+    : '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a2.83 2.83 0 1 1 4 4L5 18l-4 1 1-4Z"/></svg> Edit';
+  renderBoard();
+}
+
+function saveToken() {
+  const token = document.getElementById('tokenInput').value.trim();
+  if (!token) return;
+  localStorage.setItem('gh_token', token);
+  document.getElementById('tokenInput').value = '';
+  closeTokenModal();
+  toggleEditMode();
+}
+
+function closeTokenModal() {
+  document.getElementById('tokenModal').classList.remove('show');
+}
+
+function signOut() {
+  localStorage.removeItem('gh_token');
+  if (editMode) toggleEditMode();
+  showToast('Signed out', 'saved');
+}
+
+// Task editing
+function openTask(id) {
+  if (!editMode) return;
+  const task = tasksData.tasks.find(t => t.id === id);
+  if (!task) return;
+  
+  editingTaskId = id;
+  document.getElementById('modalTitle').textContent = 'Edit Task';
+  document.getElementById('deleteBtn').style.display = 'block';
+  document.getElementById('taskTitle').value = task.title;
+  document.getElementById('taskTags').value = task.tags.join(', ');
+  document.getElementById('taskStatus').value = task.status;
+  document.getElementById('taskProgress').value = task.progress;
+  document.getElementById('progressValue').textContent = task.progress + '%';
+  document.getElementById('taskAssignees').value = task.assignees.map(a => 
+    a.color ? `${a.name}:${a.initial}:${a.color}` : `${a.name}:${a.initial}`
+  ).join(', ');
+  document.getElementById('taskDue').value = task.dueDate || '';
+  document.getElementById('taskNote').value = task.note || '';
+  
+  document.getElementById('taskModal').classList.add('show');
+}
+
+function addTask(status) {
+  editingTaskId = null;
+  document.getElementById('modalTitle').textContent = 'New Task';
+  document.getElementById('deleteBtn').style.display = 'none';
+  document.getElementById('taskTitle').value = '';
+  document.getElementById('taskTags').value = '';
+  document.getElementById('taskStatus').value = status;
+  document.getElementById('taskProgress').value = 0;
+  document.getElementById('progressValue').textContent = '0%';
+  document.getElementById('taskAssignees').value = '';
+  document.getElementById('taskDue').value = '';
+  document.getElementById('taskNote').value = '';
+  
+  document.getElementById('taskModal').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('taskModal').classList.remove('show');
+  editingTaskId = null;
+}
+
+document.getElementById('taskProgress').addEventListener('input', e => {
+  document.getElementById('progressValue').textContent = e.target.value + '%';
+});
+
+function parseAssignees(str) {
+  if (!str.trim()) return [];
+  return str.split(',').map(a => {
+    const parts = a.trim().split(':');
+    return {
+      name: parts[0] || 'Unknown',
+      initial: parts[1] || parts[0]?.[0] || '?',
+      color: parts[2] || '#b692f6'
+    };
+  });
+}
+
+async function saveTask() {
+  const title = document.getElementById('taskTitle').value.trim();
+  if (!title) {
+    showToast('Title is required', 'error');
+    return;
+  }
+
+  const taskData = {
+    id: editingTaskId || 'task-' + Date.now(),
+    title,
+    tags: document.getElementById('taskTags').value.split(',').map(t => t.trim()).filter(Boolean),
+    status: document.getElementById('taskStatus').value,
+    progress: parseInt(document.getElementById('taskProgress').value),
+    assignees: parseAssignees(document.getElementById('taskAssignees').value),
+    dueDate: document.getElementById('taskDue').value || null,
+    note: document.getElementById('taskNote').value.trim() || null,
+    order: 0
+  };
+
+  if (editingTaskId) {
+    const idx = tasksData.tasks.findIndex(t => t.id === editingTaskId);
+    if (idx >= 0) {
+      taskData.order = tasksData.tasks[idx].order;
+      tasksData.tasks[idx] = taskData;
+    }
+  } else {
+    const siblings = tasksData.tasks.filter(t => t.status === taskData.status);
+    taskData.order = siblings.length;
+    tasksData.tasks.push(taskData);
+  }
+
+  closeModal();
+  renderBoard();
+  await persistTasks();
+}
+
+async function deleteTask() {
+  if (!editingTaskId) return;
+  if (!confirm('Delete this task?')) return;
+  
+  tasksData.tasks = tasksData.tasks.filter(t => t.id !== editingTaskId);
+  closeModal();
+  renderBoard();
+  await persistTasks();
+}
+
+async function handleDragEnd(evt) {
+  const cardEl = evt.item;
+  const taskId = cardEl.dataset.id;
+  const newStatus = evt.to.dataset.status;
+  
+  const task = tasksData.tasks.find(t => t.id === taskId);
+  if (!task) return;
+  
+  task.status = newStatus;
+  
+  // Update order for all cards in the destination column
+  const cards = evt.to.querySelectorAll('.card');
+  cards.forEach((card, idx) => {
+    const t = tasksData.tasks.find(t => t.id === card.dataset.id);
+    if (t) t.order = idx;
+  });
+
+  renderBoard();
+  await persistTasks();
+}
+
+// GitHub API
+async function persistTasks() {
+  const token = localStorage.getItem('gh_token');
+  if (!token) return;
+
+  showToast('Saving...', 'saving');
+  
+  tasksData.lastUpdated = new Date().toISOString();
+  const content = JSON.stringify(tasksData, null, 2);
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+
+  try {
+    // Get current SHA
+    const fileRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${TASKS_FILE}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    
+    if (fileRes.ok) {
+      const fileData = await fileRes.json();
+      currentSha = fileData.sha;
+    } else if (fileRes.status !== 404) {
+      throw new Error('Failed to get file info');
+    }
+
+    // Update file
+    const updateRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${TASKS_FILE}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Update tasks',
+        content: encoded,
+        sha: currentSha
+      })
+    });
+
+    if (updateRes.status === 409) {
+      // SHA conflict - refetch and retry
+      showToast('Conflict detected, retrying...', 'saving');
+      await fetchTasks();
+      await persistTasks();
+      return;
+    }
+
+    if (!updateRes.ok) {
+      const err = await updateRes.json();
+      throw new Error(err.message || 'Failed to save');
+    }
+
+    const result = await updateRes.json();
+    currentSha = result.content.sha;
+    showToast('Saved!', 'saved');
+  } catch (e) {
+    console.error(e);
+    showToast('Save failed: ' + e.message, 'error');
+  }
+}
+
+function showToast(msg, type) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast ' + type + ' show';
+  if (type !== 'saving') {
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) {
+      overlay.classList.remove('show');
+    }
+  });
+});
+
+// Check for existing token on load
+if (localStorage.getItem('gh_token')) {
+  const editBtn = document.getElementById('editBtn');
+  editBtn.title = 'Edit mode available (token stored). Right-click to sign out.';
+  editBtn.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    if (confirm('Sign out and clear stored token?')) signOut();
+  });
+}
+
+// Init
+fetchTasks();
+</script>
 </body>
 </html>

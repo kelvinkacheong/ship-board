@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-09T07:18:47.010Z",
+  "lastUpdated": "2026-10-09T07:20:36.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -68,8 +68,8 @@
         "Backend",
         "Portal"
       ],
-      "status": "in_progress",
-      "progress": 40,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -78,8 +78,8 @@
         }
       ],
       "dueDate": null,
-      "note": "BAU",
-      "order": 2
+      "note": "BAU · Done, deploying Mon Oct 12",
+      "order": 0
     },
     {
       "id": "task-005",

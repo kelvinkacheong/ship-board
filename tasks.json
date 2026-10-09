@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-09T04:07:07.884Z",
+  "lastUpdated": "2026-10-09T07:18:47.010Z",
   "tasks": [
     {
       "id": "task-001",
@@ -99,6 +99,25 @@
       "dueDate": "2026-10-09",
       "note": null,
       "order": 0
+    },
+    {
+      "id": "task-006",
+      "title": "Show Claude monthly usage in app",
+      "tags": [
+        "App"
+      ],
+      "status": "in_progress",
+      "progress": 60,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-10-14",
+      "note": null,
+      "order": 3
     }
   ]
 }

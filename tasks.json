@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-09T03:47:00Z",
+  "lastUpdated": "2026-10-09T04:06:28.972Z",
   "tasks": [
     {
       "id": "task-001",
@@ -8,8 +8,16 @@
       "status": "assigned",
       "progress": 0,
       "assignees": [
-        { "name": "Kelvin", "initial": "K", "color": "#2e90fa" },
-        { "name": "Nemuel", "initial": "N", "color": "#f79009" }
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        },
+        {
+          "name": "Nemuel",
+          "initial": "N",
+          "color": "#f79009"
+        }
       ],
       "dueDate": "2026-10-13",
       "note": null,
@@ -18,11 +26,17 @@
     {
       "id": "task-002",
       "title": "Corporate client portal — initial setup",
-      "tags": ["CBRE"],
+      "tags": [
+        "CBRE"
+      ],
       "status": "in_progress",
       "progress": 60,
       "assignees": [
-        { "name": "Maya", "initial": "M", "color": "#b692f6" }
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
       ],
       "dueDate": "2026-11-01",
       "note": null,
@@ -31,11 +45,17 @@
     {
       "id": "task-003",
       "title": "Add year-end challenge block to show shareable_credits",
-      "tags": ["App"],
+      "tags": [
+        "App"
+      ],
       "status": "in_progress",
       "progress": 50,
       "assignees": [
-        { "name": "Rachel", "initial": "R", "color": "#12b76a" }
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
       ],
       "dueDate": "2026-10-09",
       "note": null,
@@ -44,11 +64,18 @@
     {
       "id": "task-004",
       "title": "Fix happening creation end time > start time bug",
-      "tags": ["Backend", "Portal"],
+      "tags": [
+        "Backend",
+        "Portal"
+      ],
       "status": "in_progress",
       "progress": 40,
       "assignees": [
-        { "name": "Kelvin", "initial": "K", "color": "#2e90fa" }
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
       ],
       "dueDate": null,
       "note": "BAU",
@@ -57,11 +84,17 @@
     {
       "id": "task-005",
       "title": "Add shareable_credits fields in Users table",
-      "tags": ["Backend"],
+      "tags": [
+        "Backend"
+      ],
       "status": "shipped",
       "progress": 100,
       "assignees": [
-        { "name": "Rachel", "initial": "R", "color": "#12b76a" }
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
       ],
       "dueDate": "2026-10-09",
       "note": null,

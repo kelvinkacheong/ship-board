@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-10T10:23:10.000Z",
+  "lastUpdated": "2026-10-10T10:25:01.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -29,8 +29,8 @@
       "tags": [
         "CBRE"
       ],
-      "status": "in_progress",
-      "progress": 60,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",
@@ -40,7 +40,7 @@
       ],
       "dueDate": "2026-11-01",
       "note": null,
-      "order": 1
+      "order": 0
     },
     {
       "id": "task-003",
@@ -48,8 +48,8 @@
       "tags": [
         "App"
       ],
-      "status": "in_progress",
-      "progress": 50,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -59,7 +59,7 @@
       ],
       "dueDate": "2026-10-09",
       "note": null,
-      "order": 0
+      "order": 1
     },
     {
       "id": "task-004",
@@ -106,8 +106,8 @@
       "tags": [
         "App"
       ],
-      "status": "in_progress",
-      "progress": 60,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",
@@ -117,7 +117,7 @@
       ],
       "dueDate": "2026-10-14",
       "note": null,
-      "order": 3
+      "order": 2
     },
     {
       "id": "task-007",

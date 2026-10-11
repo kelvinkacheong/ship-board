@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-11T02:27:57.000Z",
+  "lastUpdated": "2026-10-11T16:16:32.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -135,6 +135,25 @@
       "dueDate": "2026-10-13",
       "note": null,
       "order": 1
+    },
+    {
+      "id": "task-008",
+      "title": "Linking real data into Year-End Challenge website",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-16",
+      "note": null,
+      "order": 2
     }
   ]
 }

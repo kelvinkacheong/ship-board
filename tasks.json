@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-11T16:16:32.000Z",
+  "lastUpdated": "2026-10-11T16:22:52.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -127,9 +127,9 @@
       "progress": 0,
       "assignees": [
         {
-          "name": "Kelvin",
-          "initial": "K",
-          "color": "#2e90fa"
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
         }
       ],
       "dueDate": "2026-10-13",

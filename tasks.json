@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-10T10:25:01.000Z",
+  "lastUpdated": "2026-10-11T02:27:57.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -132,7 +132,7 @@
           "color": "#2e90fa"
         }
       ],
-      "dueDate": "2026-10-14",
+      "dueDate": "2026-10-13",
       "note": null,
       "order": 1
     }

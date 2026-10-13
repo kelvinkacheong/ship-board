@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-13T09:53:23.000Z",
+  "lastUpdated": "2026-10-13T10:27:30.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -127,12 +127,12 @@
       "progress": 0,
       "assignees": [
         {
-          "name": "Rachel",
-          "initial": "R",
-          "color": "#12b76a"
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
         }
       ],
-      "dueDate": "2026-10-13",
+      "dueDate": "2026-10-15",
       "note": null,
       "order": 1
     },
@@ -149,6 +149,25 @@
           "name": "Rachel",
           "initial": "R",
           "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-16",
+      "note": null,
+      "order": 2
+    },
+    {
+      "id": "task-009",
+      "title": "Check executive news display",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
         }
       ],
       "dueDate": "2026-10-16",

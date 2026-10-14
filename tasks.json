@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-14T02:52:01.000Z",
+  "lastUpdated": "2026-10-14T02:52:57.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -29,7 +29,7 @@
       "tags": [
         "CBRE"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -68,7 +68,7 @@
         "Backend",
         "Portal"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {

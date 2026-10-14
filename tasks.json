@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-14T08:41:32.000Z",
+  "lastUpdated": "2026-10-14T08:44:09.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -176,7 +176,7 @@
     },
     {
       "id": "task-010",
-      "title": "Distribute shareable_credits after classes with tagged courses completed",
+      "title": "Distribute shareable_credits when classes with tagged courses completed",
       "tags": [
         "Backend"
       ],

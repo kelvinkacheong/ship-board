@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-14T04:32:10.000Z",
+  "lastUpdated": "2026-10-14T08:32:18.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -48,7 +48,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -106,7 +106,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -161,7 +161,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {

@@ -72,18 +72,24 @@
     gap: 14px;
     overflow-x: auto;
     padding-bottom: 8px;
+    height: calc(100vh - 100px);
+    align-items: start;
   }
   .column {
     background: #eef1f6;
     border-radius: 12px;
     padding: 10px;
-    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 120px);
+    min-height: 300px;
   }
   .column-header {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 6px 6px 12px;
+    flex-shrink: 0;
   }
   .dot {
     width: 8px;
@@ -106,6 +112,28 @@
   }
   .card-list {
     min-height: 50px;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-right: -4px;
+  }
+  .card-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  .card-list::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+  }
+  .card-list::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px;
+  }
+  .card-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.25);
+  }
+  .card-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.15) transparent;
   }
   .card {
     background: var(--surface);
@@ -226,6 +254,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.15s;
+    flex-shrink: 0;
   }
   .edit-mode .add-task-btn { display: block; }
   .add-task-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(46,144,250,0.05); }
@@ -373,7 +402,14 @@
   .token-info li { margin-bottom: 4px; }
 
   @media (max-width: 900px) {
-    .board { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .board { 
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      height: auto;
+    }
+    .column {
+      max-height: 400px;
+      min-height: 250px;
+    }
   }
 </style>
 </head>
@@ -546,6 +582,10 @@ function renderBoard() {
         animation: 150,
         ghostClass: 'sortable-ghost',
         dragClass: 'sortable-drag',
+        scroll: true,
+        scrollSensitivity: 80,
+        scrollSpeed: 12,
+        bubbleScroll: true,
         onEnd: handleDragEnd
       });
       sortables.push(sortable);

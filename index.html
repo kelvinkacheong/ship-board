@@ -72,7 +72,7 @@
     gap: 14px;
     overflow-x: auto;
     padding-bottom: 8px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 160px);
     align-items: start;
   }
   .column {
@@ -81,7 +81,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 180px);
     min-height: 300px;
   }
   .column-header {
@@ -411,6 +411,106 @@
       min-height: 250px;
     }
   }
+
+  /* Filter Bar */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .filter-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    min-width: 180px;
+    flex: 1;
+    max-width: 280px;
+  }
+  .filter-search svg {
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .filter-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+    width: 100%;
+    color: var(--text);
+  }
+  .filter-search input::placeholder { color: var(--muted); }
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-right: 2px;
+  }
+  .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    transition: all 0.15s;
+  }
+  .filter-chip:hover { background: #f3f4f6; }
+  .filter-chip.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .filter-chip .chip-avatar {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    color: white;
+  }
+  .filter-clear {
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .filter-clear:hover { background: #f3f4f6; color: var(--text); }
+  .filter-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+  }
+  .card.filtered-out { display: none; }
+  @media (max-width: 700px) {
+    .filter-bar { padding: 10px; gap: 8px; }
+    .filter-search { max-width: none; min-width: 100%; }
+    .filter-divider { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -424,6 +524,22 @@
       </button>
     </div>
   </header>
+
+  <div class="filter-bar" id="filterBar">
+    <div class="filter-search">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="5"/><path d="m14 14-4-4"/></svg>
+      <input type="text" id="searchInput" placeholder="Search tasks...">
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group" id="assigneeFilters">
+      <span class="filter-label">Assignee:</span>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group" id="tagFilters">
+      <span class="filter-label">Tag:</span>
+    </div>
+    <span class="filter-clear" id="clearFilters" style="display:none">Clear all</span>
+  </div>
 
   <div class="board" id="board"></div>
 
@@ -536,6 +652,25 @@ let editMode = false;
 let editingTaskId = null;
 let sortables = [];
 
+// Filter state
+let filters = {
+  search: '',
+  assignees: [],
+  tags: []
+};
+
+function loadFilters() {
+  try {
+    const saved = localStorage.getItem('board_filters');
+    if (saved) filters = JSON.parse(saved);
+  } catch (e) {}
+  document.getElementById('searchInput').value = filters.search || '';
+}
+
+function saveFilters() {
+  localStorage.setItem('board_filters', JSON.stringify(filters));
+}
+
 async function fetchTasks() {
   try {
     const res = await fetch(`tasks.json?t=${Date.now()}`);
@@ -554,10 +689,14 @@ function renderBoard() {
   sortables.forEach(s => s.destroy());
   sortables = [];
 
+  renderFilterChips();
+
   COLUMNS.forEach(col => {
     const tasks = tasksData.tasks
       .filter(t => t.status === col.id)
       .sort((a, b) => (a.order || 0) - (b.order || 0));
+    
+    const visibleTasks = tasks.filter(t => taskMatchesFilters(t));
     
     const section = document.createElement('section');
     section.className = 'column';
@@ -565,11 +704,11 @@ function renderBoard() {
       <div class="column-header">
         <span class="dot" style="background:${col.color}"></span>
         <span class="column-title">${col.title}</span>
-        <span class="count">${tasks.length}</span>
+        <span class="count">${visibleTasks.length}</span>
       </div>
       <div class="card-list" data-status="${col.id}">
         ${tasks.length === 0 && !editMode ? '<div class="empty">No tasks</div>' : ''}
-        ${tasks.map(t => renderCard(t)).join('')}
+        ${tasks.map(t => renderCard(t, !taskMatchesFilters(t))).join('')}
       </div>
       <button class="add-task-btn" onclick="addTask('${col.id}')">+ Add task</button>
     `;
@@ -595,7 +734,91 @@ function renderBoard() {
   updateMeta();
 }
 
-function renderCard(task) {
+function taskMatchesFilters(task) {
+  const searchLower = filters.search.toLowerCase();
+  if (searchLower) {
+    const titleMatch = task.title.toLowerCase().includes(searchLower);
+    const tagsMatch = task.tags.some(t => t.toLowerCase().includes(searchLower));
+    const noteMatch = task.note && task.note.toLowerCase().includes(searchLower);
+    if (!titleMatch && !tagsMatch && !noteMatch) return false;
+  }
+  if (filters.assignees.length > 0) {
+    const taskAssigneeNames = task.assignees.map(a => a.name);
+    if (!filters.assignees.some(name => taskAssigneeNames.includes(name))) return false;
+  }
+  if (filters.tags.length > 0) {
+    if (!filters.tags.some(tag => task.tags.includes(tag))) return false;
+  }
+  return true;
+}
+
+function getUniqueAssignees() {
+  const map = new Map();
+  tasksData.tasks.forEach(t => {
+    t.assignees.forEach(a => {
+      if (!map.has(a.name)) map.set(a.name, a);
+    });
+  });
+  return Array.from(map.values());
+}
+
+function getUniqueTags() {
+  const set = new Set();
+  tasksData.tasks.forEach(t => t.tags.forEach(tag => set.add(tag)));
+  return Array.from(set).sort();
+}
+
+function renderFilterChips() {
+  const assigneeContainer = document.getElementById('assigneeFilters');
+  const tagContainer = document.getElementById('tagFilters');
+  
+  assigneeContainer.innerHTML = '<span class="filter-label">Assignee:</span>';
+  tagContainer.innerHTML = '<span class="filter-label">Tag:</span>';
+  
+  getUniqueAssignees().forEach(a => {
+    const chip = document.createElement('span');
+    chip.className = 'filter-chip' + (filters.assignees.includes(a.name) ? ' active' : '');
+    chip.innerHTML = `<span class="chip-avatar" style="background:${a.color || '#b692f6'}">${escapeHtml(a.initial)}</span>${escapeHtml(a.name)}`;
+    chip.onclick = () => toggleAssigneeFilter(a.name);
+    assigneeContainer.appendChild(chip);
+  });
+  
+  getUniqueTags().forEach(tag => {
+    const chip = document.createElement('span');
+    chip.className = 'filter-chip' + (filters.tags.includes(tag) ? ' active' : '');
+    chip.textContent = tag;
+    chip.onclick = () => toggleTagFilter(tag);
+    tagContainer.appendChild(chip);
+  });
+  
+  const hasFilters = filters.search || filters.assignees.length || filters.tags.length;
+  document.getElementById('clearFilters').style.display = hasFilters ? 'inline' : 'none';
+}
+
+function toggleAssigneeFilter(name) {
+  const idx = filters.assignees.indexOf(name);
+  if (idx >= 0) filters.assignees.splice(idx, 1);
+  else filters.assignees.push(name);
+  saveFilters();
+  renderBoard();
+}
+
+function toggleTagFilter(tag) {
+  const idx = filters.tags.indexOf(tag);
+  if (idx >= 0) filters.tags.splice(idx, 1);
+  else filters.tags.push(tag);
+  saveFilters();
+  renderBoard();
+}
+
+function clearAllFilters() {
+  filters = { search: '', assignees: [], tags: [] };
+  document.getElementById('searchInput').value = '';
+  saveFilters();
+  renderBoard();
+}
+
+function renderCard(task, filteredOut = false) {
   const tagsHtml = task.tags.map(t => 
     `<span class="tag${t.toLowerCase() === 'portal' ? ' portal' : ''}">${escapeHtml(t)}</span>`
   ).join('');
@@ -628,7 +851,7 @@ function renderCard(task) {
   const showProgress = task.progress > 0 || task.status === 'in_progress' || task.status === 'shipped';
 
   return `
-    <article class="card" data-id="${task.id}" onclick="openTask('${task.id}')">
+    <article class="card${filteredOut ? ' filtered-out' : ''}" data-id="${task.id}" onclick="openTask('${task.id}')">
       <div class="tag-row">${tagsHtml}</div>
       <h3>${escapeHtml(task.title)}</h3>
       ${showProgress ? `<div class="progress-bar${task.status === 'shipped' ? ' shipped' : ''}"><span style="width:${task.progress}%"></span></div>` : ''}
@@ -908,7 +1131,17 @@ if (localStorage.getItem('gh_token')) {
   });
 }
 
+// Filter event listeners
+document.getElementById('searchInput').addEventListener('input', e => {
+  filters.search = e.target.value;
+  saveFilters();
+  renderBoard();
+});
+
+document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+
 // Init
+loadFilters();
 fetchTasks();
 </script>
 </body>

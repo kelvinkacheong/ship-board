@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-14T16:44:00.000Z",
+  "lastUpdated": "2026-10-15T13:38:00.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -140,7 +140,7 @@
       "id": "task-008",
       "title": "Linking real data into Year-End Challenge website",
       "tags": [
-        "App"
+        "Website"
       ],
       "status": "in_progress",
       "progress": 60,
@@ -192,6 +192,63 @@
       "dueDate": "2026-10-16",
       "note": null,
       "order": 3
+    },
+    {
+      "id": "task-011",
+      "title": "Batch update shareable_credits for previous students from Oct 1 to Oct 14",
+      "tags": [
+        "Backend"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-10-16",
+      "note": null,
+      "order": 4
+    },
+    {
+      "id": "task-012",
+      "title": "UI for showing shareable_credits on Portal",
+      "tags": [
+        "Portal"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-10-16",
+      "note": null,
+      "order": 5
+    },
+    {
+      "id": "task-013",
+      "title": "UI for editing shareable_credits on Portal",
+      "tags": [
+        "Portal"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-10-16",
+      "note": null,
+      "order": 6
     }
   ]
 }

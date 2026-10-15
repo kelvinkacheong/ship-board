@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-15T13:38:00.000Z",
+  "lastUpdated": "2026-10-15T16:07:00.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -25,7 +25,7 @@
     },
     {
       "id": "task-002",
-      "title": "Corporate client portal — initial setup",
+      "title": "Corporate client portal \u2014 initial setup",
       "tags": [
         "CBRE"
       ],
@@ -78,7 +78,7 @@
         }
       ],
       "dueDate": null,
-      "note": "BAU · Done, deploying Mon Oct 12",
+      "note": "BAU \u00b7 Done, deploying Mon Oct 12",
       "order": 0
     },
     {
@@ -249,6 +249,25 @@
       "dueDate": "2026-10-16",
       "note": null,
       "order": 6
+    },
+    {
+      "id": "task-014",
+      "title": "Update \"How to use\" section in Year-End Challenge website",
+      "tags": [
+        "Website"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-14",
+      "note": null,
+      "order": 7
     }
   ]
 }

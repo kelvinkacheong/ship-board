@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-16T06:50:00.000Z",
+  "lastUpdated": "2026-10-16T07:47:00.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -275,8 +275,8 @@
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 80,
       "assignees": [
         {
           "name": "Rachel",
@@ -294,8 +294,8 @@
       "tags": [
         "Backend"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",

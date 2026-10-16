@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-15T16:09:00.000Z",
+  "lastUpdated": "2026-10-16T01:54:00.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -268,6 +268,44 @@
       "dueDate": "2026-10-14",
       "note": null,
       "order": 7
+    },
+    {
+      "id": "task-015",
+      "title": "Add Q&A section to drive SEO",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-16",
+      "note": null,
+      "order": 8
+    },
+    {
+      "id": "task-016",
+      "title": "Fetch budget together with total spend on user's Claude usage",
+      "tags": [
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-10-21",
+      "note": null,
+      "order": 9
     }
   ]
 }

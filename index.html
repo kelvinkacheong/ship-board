@@ -233,6 +233,12 @@
   }
   .due.none { color: #667085; background: #f2f4f7; border-color: #d0d5dd; }
   .due.done { color: #027a48; background: #ecfdf3; border-color: #a6f4c5; }
+  .due.early { color: #027a48; background: #ecfdf3; border-color: #a6f4c5; }
+  .dates-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
   .empty {
     border: 1px dashed #d0d5dd;
     border-radius: 10px;
@@ -506,6 +512,27 @@
     background: var(--border);
   }
   .card.filtered-out { display: none; }
+  .date-mode-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-right: 6px;
+  }
+  .date-mode-toggle button {
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border: none;
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .date-mode-toggle button:first-child { border-right: 1px solid var(--border); }
+  .date-mode-toggle button:hover { background: #f3f4f6; }
+  .date-mode-toggle button.active { background: var(--primary); color: white; }
+  .filter-chip.disabled { opacity: 0.4; pointer-events: none; }
   @media (max-width: 700px) {
     .filter-bar { padding: 10px; gap: 8px; }
     .filter-search { max-width: none; min-width: 100%; }
@@ -589,6 +616,11 @@
           <label for="taskDue">Due Date</label>
           <input type="date" id="taskDue">
         </div>
+        <div class="form-group" id="completedAtGroup">
+          <label for="taskCompletedAt">Completed Date</label>
+          <input type="date" id="taskCompletedAt">
+          <small>Auto-filled when shipped; leave blank to use today</small>
+        </div>
         <div class="form-group">
           <label for="taskNote">Note</label>
           <textarea id="taskNote" placeholder="e.g. BAU, Low priority"></textarea>
@@ -661,7 +693,8 @@ let filters = {
   search: '',
   assignees: [],
   tags: [],
-  dateFilter: 'all'
+  dateFilter: 'all',
+  dateMode: 'due' // 'due' or 'completed'
 };
 
 const HKT_TZ = 'Asia/Hong_Kong';
@@ -716,6 +749,10 @@ function getTodayHKT() {
 function taskMatchesDateFilter(task) {
   if (filters.dateFilter === 'all') return true;
   
+  const isCompletedMode = filters.dateMode === 'completed';
+  const dateField = isCompletedMode ? task.completedAt : task.dueDate;
+  
+  // In Completed mode, Overdue and No due date are disabled, but handle them for Due mode
   if (filters.dateFilter === 'no_due') {
     return !task.dueDate;
   }
@@ -726,7 +763,8 @@ function taskMatchesDateFilter(task) {
     return task.dueDate < getTodayHKT();
   }
   
-  if (!task.dueDate) return false;
+  // For week filters, use the appropriate date field based on mode
+  if (!dateField) return false;
   
   let range;
   if (filters.dateFilter === 'this_week') {
@@ -738,7 +776,7 @@ function taskMatchesDateFilter(task) {
   }
   
   if (range) {
-    return task.dueDate >= range.start && task.dueDate <= range.end;
+    return dateField >= range.start && dateField <= range.end;
   }
   
   return true;
@@ -856,9 +894,16 @@ function renderFilterChips() {
   const tagContainer = document.getElementById('tagFilters');
   const dateContainer = document.getElementById('dateFilters');
   
+  const isCompletedMode = filters.dateMode === 'completed';
+  
   assigneeContainer.innerHTML = '<span class="filter-label">Assignee:</span>';
   tagContainer.innerHTML = '<span class="filter-label">Tag:</span>';
-  dateContainer.innerHTML = '<span class="filter-label">Due:</span>';
+  dateContainer.innerHTML = `
+    <div class="date-mode-toggle">
+      <button class="${filters.dateMode === 'due' ? 'active' : ''}" onclick="setDateMode('due')">Due</button>
+      <button class="${filters.dateMode === 'completed' ? 'active' : ''}" onclick="setDateMode('completed')">Completed</button>
+    </div>
+  `;
   
   getUniqueAssignees().forEach(a => {
     const chip = document.createElement('span');
@@ -878,14 +923,28 @@ function renderFilterChips() {
   
   DATE_FILTER_OPTIONS.forEach(opt => {
     const chip = document.createElement('span');
-    chip.className = 'filter-chip' + (filters.dateFilter === opt.id ? ' active' : '');
+    // Disable Overdue and No due date in Completed mode
+    const isDisabled = isCompletedMode && (opt.id === 'overdue' || opt.id === 'no_due');
+    chip.className = 'filter-chip' + (filters.dateFilter === opt.id ? ' active' : '') + (isDisabled ? ' disabled' : '');
     chip.textContent = opt.label;
-    chip.onclick = () => setDateFilter(opt.id);
+    if (!isDisabled) {
+      chip.onclick = () => setDateFilter(opt.id);
+    }
     dateContainer.appendChild(chip);
   });
   
-  const hasFilters = filters.search || filters.assignees.length || filters.tags.length || filters.dateFilter !== 'all';
+  const hasFilters = filters.search || filters.assignees.length || filters.tags.length || filters.dateFilter !== 'all' || filters.dateMode !== 'due';
   document.getElementById('clearFilters').style.display = hasFilters ? 'inline' : 'none';
+}
+
+function setDateMode(mode) {
+  filters.dateMode = mode;
+  // Reset to 'all' if switching to Completed mode with an incompatible filter
+  if (mode === 'completed' && (filters.dateFilter === 'overdue' || filters.dateFilter === 'no_due')) {
+    filters.dateFilter = 'all';
+  }
+  saveFilters();
+  renderBoard();
 }
 
 function setDateFilter(filterId) {
@@ -911,7 +970,7 @@ function toggleTagFilter(tag) {
 }
 
 function clearAllFilters() {
-  filters = { search: '', assignees: [], tags: [], dateFilter: 'all' };
+  filters = { search: '', assignees: [], tags: [], dateFilter: 'all', dateMode: 'due' };
   document.getElementById('searchInput').value = '';
   saveFilters();
   renderBoard();
@@ -937,14 +996,26 @@ function renderCard(task, filteredOut = false) {
   }
   if (task.note) progressLabel += ` · ${escapeHtml(task.note)}`;
 
-  let dueHtml = '';
+  let datesHtml = '';
+  const isShipped = task.status === 'shipped';
+  
+  // Show due date
   if (task.dueDate) {
     const d = new Date(task.dueDate);
     const formatted = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    const isShipped = task.status === 'shipped';
-    dueHtml = `<span class="due${isShipped ? ' done' : ''}">${formatted}</span>`;
+    const isOverdue = !isShipped && task.dueDate < getTodayHKT();
+    const isEarly = isShipped && task.completedAt && task.completedAt < task.dueDate;
+    let dueClass = isOverdue ? '' : (isShipped || isEarly ? ' done' : '');
+    datesHtml += `<span class="due${dueClass}">${formatted}</span>`;
   } else {
-    dueHtml = '<span class="due none">No due date</span>';
+    datesHtml += '<span class="due none">No due date</span>';
+  }
+  
+  // Show completed date for shipped tasks
+  if (isShipped && task.completedAt) {
+    const c = new Date(task.completedAt);
+    const completedFormatted = c.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    datesHtml += `<span class="due done">Done ${completedFormatted}</span>`;
   }
 
   const showProgress = task.progress > 0 || task.status === 'in_progress' || task.status === 'shipped';
@@ -957,7 +1028,7 @@ function renderCard(task, filteredOut = false) {
       <div class="progress-label">${progressLabel}</div>
       <div class="footer">
         <div class="assignee">${assigneesHtml} ${escapeHtml(assigneeNames)}</div>
-        ${dueHtml}
+        <div class="dates-row">${datesHtml}</div>
       </div>
     </article>
   `;
@@ -1033,9 +1104,18 @@ function openTask(id) {
     a.color ? `${a.name}:${a.initial}:${a.color}` : `${a.name}:${a.initial}`
   ).join(', ');
   document.getElementById('taskDue').value = task.dueDate || '';
+  document.getElementById('taskCompletedAt').value = task.completedAt || '';
   document.getElementById('taskNote').value = task.note || '';
   
+  // Show/hide completedAt field based on status
+  updateCompletedAtVisibility(task.status);
+  
   document.getElementById('taskModal').classList.add('show');
+}
+
+function updateCompletedAtVisibility(status) {
+  const group = document.getElementById('completedAtGroup');
+  group.style.display = status === 'shipped' ? 'block' : 'none';
 }
 
 function addTask(status) {
@@ -1049,7 +1129,11 @@ function addTask(status) {
   document.getElementById('progressValue').textContent = '0%';
   document.getElementById('taskAssignees').value = '';
   document.getElementById('taskDue').value = '';
+  document.getElementById('taskCompletedAt').value = '';
   document.getElementById('taskNote').value = '';
+  
+  // Show/hide completedAt field based on status
+  updateCompletedAtVisibility(status);
   
   document.getElementById('taskModal').classList.add('show');
 }
@@ -1061,6 +1145,10 @@ function closeModal() {
 
 document.getElementById('taskProgress').addEventListener('input', e => {
   document.getElementById('progressValue').textContent = e.target.value + '%';
+});
+
+document.getElementById('taskStatus').addEventListener('change', e => {
+  updateCompletedAtVisibility(e.target.value);
 });
 
 function parseAssignees(str) {
@@ -1082,14 +1170,27 @@ async function saveTask() {
     return;
   }
 
+  const status = document.getElementById('taskStatus').value;
+  let completedAt = document.getElementById('taskCompletedAt').value || null;
+  
+  // Auto-fill completedAt when status is shipped and no date provided
+  if (status === 'shipped' && !completedAt) {
+    completedAt = getTodayHKT();
+  }
+  // Clear completedAt if not shipped
+  if (status !== 'shipped') {
+    completedAt = null;
+  }
+
   const taskData = {
     id: editingTaskId || 'task-' + Date.now(),
     title,
     tags: document.getElementById('taskTags').value.split(',').map(t => t.trim()).filter(Boolean),
-    status: document.getElementById('taskStatus').value,
+    status,
     progress: parseInt(document.getElementById('taskProgress').value),
     assignees: parseAssignees(document.getElementById('taskAssignees').value),
     dueDate: document.getElementById('taskDue').value || null,
+    completedAt,
     note: document.getElementById('taskNote').value.trim() || null,
     order: 0
   };
@@ -1129,7 +1230,19 @@ async function handleDragEnd(evt) {
   const task = tasksData.tasks.find(t => t.id === taskId);
   if (!task) return;
   
+  const oldStatus = task.status;
   task.status = newStatus;
+  
+  // Auto-set completedAt when dragged to shipped
+  if (newStatus === 'shipped' && oldStatus !== 'shipped') {
+    if (!task.completedAt) {
+      task.completedAt = getTodayHKT();
+    }
+  }
+  // Clear completedAt when dragged away from shipped
+  if (newStatus !== 'shipped' && oldStatus === 'shipped') {
+    task.completedAt = null;
+  }
   
   // Update order for all cards in the destination column
   const cards = evt.to.querySelectorAll('.card');

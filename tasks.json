@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-16T07:47:00.000Z",
+  "lastUpdated": "2026-10-17T06:59:00.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -275,8 +275,8 @@
       "tags": [
         "Website"
       ],
-      "status": "in_progress",
-      "progress": 80,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",

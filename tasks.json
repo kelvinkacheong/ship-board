@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-17T15:24:00.000Z",
+  "lastUpdated": "2026-10-17T17:13:00.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -364,6 +364,26 @@
       "completedAt": null,
       "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 → development · CI green",
       "order": 11
+    },
+    {
+      "id": "task-019",
+      "title": "Fix EAS Update crash-once-then-works (Updates.reloadAsync race)",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "PR https://github.com/preface-ai/app/pull/845 · OTA app-features-phase-2-5-20261014 (runtime 133) · JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build · merge is Kelvin's call",
+      "order": 12
     }
   ]
 }

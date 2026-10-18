@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-18T05:50:05.000Z",
+  "lastUpdated": "2026-10-18T07:32:45.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -384,6 +384,31 @@
       "completedAt": null,
       "note": "PR https://github.com/preface-ai/app/pull/845 \u00b7 OTA app-features-phase-2-5-20261014 (runtime 133) \u00b7 JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build \u00b7 merge is Kelvin's call",
       "order": 12
+    },
+    {
+      "id": "task-020",
+      "title": "Activate Metabot (Metabase)",
+      "tags": [
+        "Metabase"
+      ],
+      "status": "in_progress",
+      "progress": 70,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        },
+        {
+          "name": "Inga",
+          "initial": "I",
+          "color": "#ee46bc"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "Self-hosted Metabase; LiteLLM \u2192 Claude via gpt-5.4 alias. Restrict table access via group data permissions \u2014 public users must not see all tables.",
+      "order": 13
     }
   ]
 }

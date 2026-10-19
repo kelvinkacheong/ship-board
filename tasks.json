@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-19T15:36:15.000Z",
+  "lastUpdated": "2026-10-19T15:38:03.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -454,6 +454,26 @@
       "completedAt": null,
       "note": null,
       "order": 15
+    },
+    {
+      "id": "task-023",
+      "title": "Replicate register form for super admin",
+      "tags": [
+        "Portal"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-10-21",
+      "completedAt": null,
+      "note": null,
+      "order": 16
     }
   ]
 }

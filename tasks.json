@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-18T16:56:09.000Z",
+  "lastUpdated": "2026-10-19T15:36:15.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -429,6 +429,31 @@
       "completedAt": null,
       "note": null,
       "order": 14
+    },
+    {
+      "id": "task-022",
+      "title": "Announce CBRE Portal to Yuki",
+      "tags": [
+        "CBRE"
+      ],
+      "status": "pending_further_actions",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        },
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-11-01",
+      "completedAt": null,
+      "note": null,
+      "order": 15
     }
   ]
 }

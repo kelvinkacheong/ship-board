@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T09:51:14.000Z",
+  "lastUpdated": "2026-10-20T09:51:52.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -481,13 +481,13 @@
       "tags": [
         "Backend"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 90,
       "assignees": [
         {
-          "name": "Maya",
-          "initial": "M",
-          "color": "#b692f6"
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
         }
       ],
       "dueDate": "2026-10-23",

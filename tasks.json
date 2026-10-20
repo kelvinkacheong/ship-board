@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T09:53:32.000Z",
+  "lastUpdated": "2026-10-20T09:54:30.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -150,7 +150,7 @@
         "Website"
       ],
       "status": "pending_further_actions",
-      "progress": 60,
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -350,7 +350,7 @@
         "Backend"
       ],
       "status": "pending_further_actions",
-      "progress": 80,
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",

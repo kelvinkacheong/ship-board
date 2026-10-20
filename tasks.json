@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T09:51:52.000Z",
+  "lastUpdated": "2026-10-20T09:52:45.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -327,8 +327,7 @@
       "id": "task-017",
       "title": "Dependabot: fix(deps) axios/postcss/fast-uri/nanoid (preface-website-frontend #2140)",
       "tags": [
-        "Dependabot",
-        "Frontend"
+        "Website"
       ],
       "status": "shipped",
       "progress": 100,
@@ -348,7 +347,6 @@
       "id": "task-018",
       "title": "Dependabot: chore(deps) fix-soon gems (preface-nomad-b #5660)",
       "tags": [
-        "Dependabot",
         "Backend"
       ],
       "status": "pending_further_actions",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T01:59:05.000Z",
+  "lastUpdated": "2026-10-20T07:40:43.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -494,6 +494,26 @@
       "completedAt": null,
       "note": null,
       "order": 17
+    },
+    {
+      "id": "task-025",
+      "title": "Add preference under nomad profile",
+      "tags": [
+        "Portal"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-21",
+      "completedAt": "2026-10-20",
+      "note": null,
+      "order": 18
     }
   ]
 }

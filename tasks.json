@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T01:54:39.000Z",
+  "lastUpdated": "2026-10-20T01:59:05.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -474,6 +474,26 @@
       "completedAt": null,
       "note": null,
       "order": 16
+    },
+    {
+      "id": "task-024",
+      "title": "Apply PCW discount to member's parent account too",
+      "tags": [
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-10-23",
+      "completedAt": null,
+      "note": null,
+      "order": 17
     }
   ]
 }

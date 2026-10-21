@@ -597,6 +597,24 @@
       "completedAt": null,
       "note": null,
       "order": 22
+    },
+    {
+      "id": "task-030",
+      "title": "Explore connecting LinkedIn to Claude Desktop",
+      "tags": [],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 23
     }
   ]
 }

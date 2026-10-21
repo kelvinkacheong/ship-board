@@ -512,6 +512,26 @@
       "completedAt": "2026-10-20",
       "note": null,
       "order": 18
+    },
+    {
+      "id": "task-026",
+      "title": "Explore Mailchimp to send membership order receipt",
+      "tags": [
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 19
     }
   ]
 }

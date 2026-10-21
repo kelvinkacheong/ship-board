@@ -528,7 +528,7 @@
           "color": "#b692f6"
         }
       ],
-      "dueDate": null,
+      "dueDate": "2026-10-26",
       "completedAt": null,
       "note": null,
       "order": 19
@@ -548,7 +548,7 @@
           "color": "#12b76a"
         }
       ],
-      "dueDate": null,
+      "dueDate": "2026-10-26",
       "completedAt": null,
       "note": null,
       "order": 20
@@ -568,10 +568,35 @@
           "color": "#12b76a"
         }
       ],
-      "dueDate": null,
+      "dueDate": "2026-10-26",
       "completedAt": null,
       "note": null,
       "order": 21
+    },
+    {
+      "id": "task-029",
+      "title": "New web page for news and events",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        },
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-26",
+      "completedAt": null,
+      "note": null,
+      "order": 22
     }
   ]
 }

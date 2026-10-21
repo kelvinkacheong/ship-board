@@ -309,7 +309,7 @@
       "tags": [
         "Backend"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -319,7 +319,7 @@
         }
       ],
       "dueDate": "2026-10-21",
-      "completedAt": null,
+      "completedAt": "2026-10-21",
       "note": null,
       "order": 9
     },
@@ -369,8 +369,8 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
-      "progress": 80,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -379,7 +379,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-10-21",
       "note": "PR https://github.com/preface-ai/app/pull/845 · OTA app-features-phase-2-5-20261014 (runtime 133) · JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build · merge is Kelvin's call",
       "order": 12
     },
@@ -414,7 +414,7 @@
       "tags": [
         "Backend"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -424,7 +424,7 @@
         }
       ],
       "dueDate": "2026-10-20",
-      "completedAt": null,
+      "completedAt": "2026-10-21",
       "note": null,
       "order": 14
     },
@@ -434,7 +434,7 @@
       "tags": [
         "CBRE"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -449,7 +449,7 @@
         }
       ],
       "dueDate": "2026-11-01",
-      "completedAt": null,
+      "completedAt": "2026-10-21",
       "note": null,
       "order": 15
     },

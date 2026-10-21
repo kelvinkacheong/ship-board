@@ -532,6 +532,46 @@
       "completedAt": null,
       "note": null,
       "order": 19
+    },
+    {
+      "id": "task-027",
+      "title": "Add gifts field to Membership",
+      "tags": [
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 20
+    },
+    {
+      "id": "task-028",
+      "title": "Add gifts field to Membership Order UI",
+      "tags": [
+        "Portal"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 21
     }
   ]
 }

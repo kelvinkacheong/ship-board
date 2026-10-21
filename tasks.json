@@ -349,7 +349,7 @@
       "tags": [
         "Backend"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -359,7 +359,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-10-21",
       "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 → development · CI green",
       "order": 11
     },

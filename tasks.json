@@ -459,7 +459,7 @@
       "tags": [
         "Portal"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -469,7 +469,7 @@
         }
       ],
       "dueDate": "2026-10-21",
-      "completedAt": null,
+      "completedAt": "2026-10-22",
       "note": null,
       "order": 16
     },

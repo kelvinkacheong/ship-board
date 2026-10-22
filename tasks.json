@@ -519,8 +519,8 @@
       "tags": [
         "Backend"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "pending_further_actions",
+      "progress": 90,
       "assignees": [
         {
           "name": "Maya",

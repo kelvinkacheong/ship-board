@@ -657,9 +657,15 @@
       "tags": [
         "Website"
       ],
-      "status": "pending",
+      "status": "assigned",
       "progress": 0,
-      "assignees": [],
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
       "dueDate": null,
       "completedAt": null,
       "note": null,

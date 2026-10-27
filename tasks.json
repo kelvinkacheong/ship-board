@@ -657,8 +657,8 @@
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -667,7 +667,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-10-27",
       "note": null,
       "order": 26
     }

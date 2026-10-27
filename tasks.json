@@ -610,6 +610,46 @@
       "completedAt": null,
       "note": null,
       "order": 23
+    },
+    {
+      "id": "task-031",
+      "title": "Version 1 Noir membership website",
+      "tags": [
+        "Website"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-10-27",
+      "completedAt": "2026-10-27",
+      "note": null,
+      "order": 24
+    },
+    {
+      "id": "task-032",
+      "title": "Version 2 Preface membership website",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 25
     }
   ]
 }

@@ -710,6 +710,26 @@
       "completedAt": null,
       "note": null,
       "order": 28
+    },
+    {
+      "id": "task-036",
+      "title": "Node 24.22.1 security pin (preface-ai/app #847)",
+      "tags": [
+        "App"
+      ],
+      "status": "pending_further_actions",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "PR https://github.com/preface-ai/app/pull/847 · ready/merge still with teammates",
+      "order": 29
     }
   ]
 }

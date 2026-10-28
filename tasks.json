@@ -670,6 +670,46 @@
       "completedAt": "2026-10-27",
       "note": null,
       "order": 26
+    },
+    {
+      "id": "task-034",
+      "title": "Pay at register field for pcw_location",
+      "tags": [
+        "Backend"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": "2026-10-28",
+      "note": null,
+      "order": 27
+    },
+    {
+      "id": "task-035",
+      "title": "Add pay at register button for CBRE",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 28
     }
   ]
 }

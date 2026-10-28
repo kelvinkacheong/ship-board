@@ -637,13 +637,13 @@
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 80,
       "assignees": [
         {
-          "name": "Kelvin",
-          "initial": "K",
-          "color": "#2e90fa"
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
         }
       ],
       "dueDate": null,

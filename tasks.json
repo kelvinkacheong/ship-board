@@ -686,7 +686,7 @@
           "color": "#b692f6"
         }
       ],
-      "dueDate": null,
+      "dueDate": "2026-10-30",
       "completedAt": "2026-10-28",
       "note": null,
       "order": 27
@@ -706,7 +706,7 @@
           "color": "#b692f6"
         }
       ],
-      "dueDate": null,
+      "dueDate": "2026-10-30",
       "completedAt": null,
       "note": null,
       "order": 28

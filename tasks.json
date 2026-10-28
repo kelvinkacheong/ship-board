@@ -697,8 +697,8 @@
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 70,
       "assignees": [
         {
           "name": "Maya",

@@ -539,7 +539,7 @@
       "tags": [
         "Backend"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -549,7 +549,7 @@
         }
       ],
       "dueDate": "2026-10-26",
-      "completedAt": null,
+      "completedAt": "2026-10-28",
       "note": null,
       "order": 20
     },
@@ -559,7 +559,7 @@
       "tags": [
         "Portal"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -569,7 +569,7 @@
         }
       ],
       "dueDate": "2026-10-26",
-      "completedAt": null,
+      "completedAt": "2026-10-28",
       "note": null,
       "order": 21
     },

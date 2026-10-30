@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30T04:30:40.024Z",
+  "lastUpdated": "2026-10-30T04:30:46.723Z",
   "tasks": [
     {
       "id": "task-001",
@@ -42,7 +42,7 @@
       "dueDate": "2026-11-01",
       "completedAt": "2026-10-14",
       "note": null,
-      "order": 0
+      "order": 2
     },
     {
       "id": "task-003",
@@ -62,7 +62,7 @@
       "dueDate": "2026-10-09",
       "completedAt": "2026-10-14",
       "note": null,
-      "order": 1
+      "order": 5
     },
     {
       "id": "task-004",
@@ -83,7 +83,7 @@
       "dueDate": null,
       "completedAt": "2026-10-14",
       "note": "BAU · Done, deploying Mon Oct 12",
-      "order": 0
+      "order": 3
     },
     {
       "id": "task-005",
@@ -103,7 +103,7 @@
       "dueDate": "2026-10-09",
       "completedAt": "2026-10-09",
       "note": null,
-      "order": 0
+      "order": 4
     },
     {
       "id": "task-006",
@@ -123,7 +123,7 @@
       "dueDate": "2026-10-14",
       "completedAt": "2026-10-14",
       "note": null,
-      "order": 2
+      "order": 7
     },
     {
       "id": "task-007",
@@ -141,7 +141,7 @@
       "dueDate": "2026-10-15",
       "completedAt": "2026-10-14",
       "note": null,
-      "order": 1
+      "order": 6
     },
     {
       "id": "task-008",
@@ -181,7 +181,7 @@
       "dueDate": "2026-10-16",
       "completedAt": "2026-10-14",
       "note": null,
-      "order": 2
+      "order": 8
     },
     {
       "id": "task-010",
@@ -201,7 +201,7 @@
       "dueDate": "2026-10-16",
       "completedAt": "2026-10-16",
       "note": null,
-      "order": 3
+      "order": 9
     },
     {
       "id": "task-011",
@@ -221,7 +221,7 @@
       "dueDate": "2026-10-16",
       "completedAt": "2026-10-15",
       "note": null,
-      "order": 4
+      "order": 10
     },
     {
       "id": "task-012",
@@ -241,7 +241,7 @@
       "dueDate": "2026-10-16",
       "completedAt": "2026-10-15",
       "note": null,
-      "order": 5
+      "order": 11
     },
     {
       "id": "task-013",
@@ -261,7 +261,7 @@
       "dueDate": "2026-10-16",
       "completedAt": "2026-10-16",
       "note": null,
-      "order": 6
+      "order": 12
     },
     {
       "id": "task-014",
@@ -281,7 +281,7 @@
       "dueDate": "2026-10-14",
       "completedAt": "2026-10-16",
       "note": null,
-      "order": 7
+      "order": 13
     },
     {
       "id": "task-015",
@@ -301,7 +301,7 @@
       "dueDate": "2026-10-16",
       "completedAt": "2026-10-17",
       "note": null,
-      "order": 8
+      "order": 14
     },
     {
       "id": "task-016",
@@ -321,7 +321,7 @@
       "dueDate": "2026-10-21",
       "completedAt": "2026-10-21",
       "note": null,
-      "order": 9
+      "order": 15
     },
     {
       "id": "task-017",
@@ -341,7 +341,7 @@
       "dueDate": null,
       "completedAt": "2026-10-20",
       "note": "PR https://github.com/preface-ai/preface-website-frontend/pull/2140 · draft · Vercel green; Lingui needs Kelvin approve",
-      "order": 10
+      "order": 16
     },
     {
       "id": "task-018",
@@ -361,7 +361,7 @@
       "dueDate": null,
       "completedAt": "2026-10-21",
       "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 → development · CI green",
-      "order": 11
+      "order": 17
     },
     {
       "id": "task-019",
@@ -381,7 +381,7 @@
       "dueDate": null,
       "completedAt": "2026-10-21",
       "note": "PR https://github.com/preface-ai/app/pull/845 · OTA app-features-phase-2-5-20261014 (runtime 133) · JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build · merge is Kelvin's call",
-      "order": 12
+      "order": 18
     },
     {
       "id": "task-020",
@@ -426,7 +426,7 @@
       "dueDate": "2026-10-20",
       "completedAt": "2026-10-21",
       "note": null,
-      "order": 14
+      "order": 19
     },
     {
       "id": "task-022",
@@ -451,7 +451,7 @@
       "dueDate": "2026-11-01",
       "completedAt": "2026-10-21",
       "note": null,
-      "order": 15
+      "order": 20
     },
     {
       "id": "task-023",
@@ -471,7 +471,7 @@
       "dueDate": "2026-10-21",
       "completedAt": "2026-10-22",
       "note": null,
-      "order": 16
+      "order": 21
     },
     {
       "id": "task-024",
@@ -491,7 +491,7 @@
       "dueDate": "2026-10-23",
       "completedAt": "2026-10-21",
       "note": null,
-      "order": 17
+      "order": 22
     },
     {
       "id": "task-025",
@@ -511,7 +511,7 @@
       "dueDate": "2026-10-21",
       "completedAt": "2026-10-20",
       "note": null,
-      "order": 18
+      "order": 23
     },
     {
       "id": "task-026",
@@ -531,7 +531,7 @@
       "dueDate": "2026-10-26",
       "completedAt": "2026-10-29",
       "note": null,
-      "order": 19
+      "order": 24
     },
     {
       "id": "task-027",
@@ -551,7 +551,7 @@
       "dueDate": "2026-10-26",
       "completedAt": "2026-10-28",
       "note": null,
-      "order": 20
+      "order": 25
     },
     {
       "id": "task-028",
@@ -571,7 +571,7 @@
       "dueDate": "2026-10-26",
       "completedAt": "2026-10-28",
       "note": null,
-      "order": 21
+      "order": 26
     },
     {
       "id": "task-029",
@@ -591,7 +591,7 @@
       "dueDate": "2026-10-26",
       "completedAt": "2026-10-30",
       "note": null,
-      "order": 22
+      "order": 27
     },
     {
       "id": "task-030",
@@ -629,7 +629,7 @@
       "dueDate": "2026-10-27",
       "completedAt": "2026-10-27",
       "note": null,
-      "order": 24
+      "order": 28
     },
     {
       "id": "task-032",
@@ -654,7 +654,7 @@
       "dueDate": "2026-10-28",
       "completedAt": "2026-10-28",
       "note": null,
-      "order": 25
+      "order": 29
     },
     {
       "id": "task-033",
@@ -674,7 +674,7 @@
       "dueDate": null,
       "completedAt": "2026-10-27",
       "note": null,
-      "order": 26
+      "order": 30
     },
     {
       "id": "task-034",
@@ -694,7 +694,7 @@
       "dueDate": "2026-10-30",
       "completedAt": "2026-10-28",
       "note": null,
-      "order": 27
+      "order": 31
     },
     {
       "id": "task-035",
@@ -774,7 +774,7 @@
       "tags": [
         "Backend"
       ],
-      "status": "in_progress",
+      "status": "shipped",
       "progress": 90,
       "assignees": [
         {
@@ -784,7 +784,7 @@
         }
       ],
       "dueDate": "2026-10-30",
-      "completedAt": null,
+      "completedAt": "2026-10-30",
       "note": null,
       "order": 1
     },

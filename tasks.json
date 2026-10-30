@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30T09:14:40.000Z",
+  "lastUpdated": "2026-10-30T09:33:50.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -865,6 +865,26 @@
       "completedAt": null,
       "note": null,
       "order": 36
+    },
+    {
+      "id": "task-044",
+      "title": "Preface App / Android \u2014 DEX code optimization (Play Console)",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "Play flagged DEX below threshold \u00b7 Obfuscation 2% (under 25% may hurt visibility/publishing) \u00b7 later build, not current \u00b7 https://developer.android.com/topic/performance/vitals/code-optimization",
+      "order": 37
     }
   ]
 }

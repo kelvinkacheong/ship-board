@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T09:54:30.000Z",
+  "lastUpdated": "2026-10-30T04:05:43.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -26,7 +26,7 @@
     },
     {
       "id": "task-002",
-      "title": "Corporate client portal — initial setup",
+      "title": "Corporate client portal \u2014 initial setup",
       "tags": [
         "CBRE"
       ],
@@ -82,7 +82,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-14",
-      "note": "BAU · Done, deploying Mon Oct 12",
+      "note": "BAU \u00b7 Done, deploying Mon Oct 12",
       "order": 0
     },
     {
@@ -340,7 +340,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-20",
-      "note": "PR https://github.com/preface-ai/preface-website-frontend/pull/2140 · draft · Vercel green; Lingui needs Kelvin approve",
+      "note": "PR https://github.com/preface-ai/preface-website-frontend/pull/2140 \u00b7 draft \u00b7 Vercel green; Lingui needs Kelvin approve",
       "order": 10
     },
     {
@@ -360,7 +360,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-21",
-      "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 → development · CI green",
+      "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 \u2192 development \u00b7 CI green",
       "order": 11
     },
     {
@@ -380,7 +380,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-21",
-      "note": "PR https://github.com/preface-ai/app/pull/845 · OTA app-features-phase-2-5-20261014 (runtime 133) · JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build · merge is Kelvin's call",
+      "note": "PR https://github.com/preface-ai/app/pull/845 \u00b7 OTA app-features-phase-2-5-20261014 (runtime 133) \u00b7 JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build \u00b7 merge is Kelvin's call",
       "order": 12
     },
     {
@@ -405,7 +405,7 @@
       ],
       "dueDate": null,
       "completedAt": null,
-      "note": "Self-hosted Metabase; LiteLLM → Claude via gpt-5.4 alias. Restrict table access via group data permissions — public users must not see all tables.",
+      "note": "Self-hosted Metabase; LiteLLM \u2192 Claude via gpt-5.4 alias. Restrict table access via group data permissions \u2014 public users must not see all tables.",
       "order": 13
     },
     {
@@ -579,7 +579,7 @@
       "tags": [
         "Website"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -589,7 +589,7 @@
         }
       ],
       "dueDate": "2026-10-26",
-      "completedAt": null,
+      "completedAt": "2026-10-30",
       "note": null,
       "order": 22
     },
@@ -702,8 +702,8 @@
       "tags": [
         "App"
       ],
-      "status": "in_progress",
-      "progress": 70,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",
@@ -733,7 +733,7 @@
       ],
       "dueDate": null,
       "completedAt": null,
-      "note": "PR https://github.com/preface-ai/app/pull/847 · ready/merge still with teammates",
+      "note": "PR https://github.com/preface-ai/app/pull/847 \u00b7 ready/merge still with teammates",
       "order": 29
     },
     {
@@ -767,6 +767,84 @@
       "completedAt": null,
       "note": null,
       "order": 31
+    },
+    {
+      "id": "task-039",
+      "title": "Add new monthly membership products",
+      "tags": [
+        "Backend"
+      ],
+      "status": "in_progress",
+      "progress": 90,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-10-30",
+      "completedAt": null,
+      "note": null,
+      "order": 32
+    },
+    {
+      "id": "task-040",
+      "title": "Minor copywriting changes again on website",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-02",
+      "completedAt": null,
+      "note": null,
+      "order": 33
+    },
+    {
+      "id": "task-041",
+      "title": "Upgrade internal team Claude models",
+      "tags": [],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-10-30",
+      "completedAt": null,
+      "note": null,
+      "order": 34
+    },
+    {
+      "id": "task-042",
+      "title": "Submit releave v1.7.1 for new EAS build",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-10-30",
+      "completedAt": null,
+      "note": null,
+      "order": 35
     }
   ]
 }

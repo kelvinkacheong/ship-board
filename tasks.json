@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30T04:30:46.723Z",
+  "lastUpdated": "2026-10-30T09:14:40.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -26,7 +26,7 @@
     },
     {
       "id": "task-002",
-      "title": "Corporate client portal — initial setup",
+      "title": "Corporate client portal \u2014 initial setup",
       "tags": [
         "CBRE"
       ],
@@ -82,7 +82,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-14",
-      "note": "BAU · Done, deploying Mon Oct 12",
+      "note": "BAU \u00b7 Done, deploying Mon Oct 12",
       "order": 3
     },
     {
@@ -340,7 +340,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-20",
-      "note": "PR https://github.com/preface-ai/preface-website-frontend/pull/2140 · draft · Vercel green; Lingui needs Kelvin approve",
+      "note": "PR https://github.com/preface-ai/preface-website-frontend/pull/2140 \u00b7 draft \u00b7 Vercel green; Lingui needs Kelvin approve",
       "order": 16
     },
     {
@@ -360,7 +360,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-21",
-      "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 → development · CI green",
+      "note": "PR https://github.com/preface-ai/preface-nomad-b/pull/5660 \u2192 development \u00b7 CI green",
       "order": 17
     },
     {
@@ -380,7 +380,7 @@
       ],
       "dueDate": null,
       "completedAt": "2026-10-21",
-      "note": "PR https://github.com/preface-ai/app/pull/845 · OTA app-features-phase-2-5-20261014 (runtime 133) · JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build · merge is Kelvin's call",
+      "note": "PR https://github.com/preface-ai/app/pull/845 \u00b7 OTA app-features-phase-2-5-20261014 (runtime 133) \u00b7 JS reload fix via EAS Update; ON_ERROR_RECOVERY needs next EAS build \u00b7 merge is Kelvin's call",
       "order": 18
     },
     {
@@ -405,7 +405,7 @@
       ],
       "dueDate": null,
       "completedAt": null,
-      "note": "Self-hosted Metabase; LiteLLM → Claude via gpt-5.4 alias. Restrict table access via group data permissions — public users must not see all tables.",
+      "note": "Self-hosted Metabase; LiteLLM \u2192 Claude via gpt-5.4 alias. Restrict table access via group data permissions \u2014 public users must not see all tables.",
       "order": 0
     },
     {
@@ -733,7 +733,7 @@
       ],
       "dueDate": null,
       "completedAt": null,
-      "note": "PR https://github.com/preface-ai/app/pull/847 · ready/merge still with teammates",
+      "note": "PR https://github.com/preface-ai/app/pull/847 \u00b7 ready/merge still with teammates",
       "order": 29
     },
     {
@@ -845,6 +845,26 @@
       "completedAt": null,
       "note": null,
       "order": 35
+    },
+    {
+      "id": "task-043",
+      "title": "Use \"Nomad - B2B assigned class\" Postmark template for all school event happenings",
+      "tags": [
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-06",
+      "completedAt": null,
+      "note": null,
+      "order": 36
     }
   ]
 }

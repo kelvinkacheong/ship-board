@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30T04:09:53.736Z",
+  "lastUpdated": "2026-10-30T04:30:40.024Z",
   "tasks": [
     {
       "id": "task-001",
@@ -406,7 +406,7 @@
       "dueDate": null,
       "completedAt": null,
       "note": "Self-hosted Metabase; LiteLLM → Claude via gpt-5.4 alias. Restrict table access via group data permissions — public users must not see all tables.",
-      "order": 13
+      "order": 0
     },
     {
       "id": "task-021",
@@ -786,7 +786,7 @@
       "dueDate": "2026-10-30",
       "completedAt": null,
       "note": null,
-      "order": 32
+      "order": 1
     },
     {
       "id": "task-040",

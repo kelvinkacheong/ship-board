@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-02T01:50:40.000Z",
+  "lastUpdated": "2026-11-02T06:26:49.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -892,8 +892,8 @@
       "tags": [
         "Website"
       ],
-      "status": "in_progress",
-      "progress": 50,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -905,6 +905,26 @@
       "completedAt": null,
       "note": null,
       "order": 38
+    },
+    {
+      "id": "task-046",
+      "title": "New calendar view for membership events",
+      "tags": [
+        "Website"
+      ],
+      "status": "pending_further_actions",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 39
     }
   ]
 }

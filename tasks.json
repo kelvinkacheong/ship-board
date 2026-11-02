@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-02T06:26:49.000Z",
+  "lastUpdated": "2026-11-02T10:00:14.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -892,7 +892,7 @@
       "tags": [
         "Website"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -902,7 +902,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-02",
       "note": null,
       "order": 38
     },
@@ -912,7 +912,7 @@
       "tags": [
         "Website"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -922,7 +922,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-02",
       "note": null,
       "order": 39
     }

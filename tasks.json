@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-03T02:47:59.000Z",
+  "lastUpdated": "2026-11-04T03:17:38.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -722,7 +722,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -732,7 +732,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-04",
       "note": "PR https://github.com/preface-ai/app/pull/847 \u00b7 ready/merge still with teammates",
       "order": 29
     },
@@ -742,7 +742,7 @@
       "tags": [
         "Backend"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -752,7 +752,7 @@
         }
       ],
       "dueDate": "2026-10-30",
-      "completedAt": null,
+      "completedAt": "2026-11-04",
       "note": null,
       "order": 30
     },

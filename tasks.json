@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T03:21:19.000Z",
+  "lastUpdated": "2026-11-04T06:11:21.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -702,7 +702,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -712,7 +712,7 @@
         }
       ],
       "dueDate": "2026-10-30",
-      "completedAt": null,
+      "completedAt": "2026-11-04",
       "note": null,
       "order": 28
     },
@@ -981,6 +981,24 @@
       "completedAt": null,
       "note": null,
       "order": 42
+    },
+    {
+      "id": "task-050",
+      "title": "Include onboarding guide into virtual key email",
+      "tags": [],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 43
     }
   ]
 }

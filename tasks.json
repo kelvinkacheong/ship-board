@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T06:11:21.000Z",
+  "lastUpdated": "2026-11-04T07:49:10.000Z",
   "tasks": [
     {
       "id": "task-001",
@@ -986,8 +986,28 @@
       "id": "task-050",
       "title": "Include onboarding guide into virtual key email",
       "tags": [],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": "2026-11-04",
+      "note": null,
+      "order": 43
+    },
+    {
+      "id": "task-051",
+      "title": "Membership page credits field change to compulsory",
+      "tags": [
+        "Portal"
+      ],
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -995,10 +1015,10 @@
           "color": "#2e90fa"
         }
       ],
-      "dueDate": null,
-      "completedAt": null,
+      "dueDate": "2026-11-05",
+      "completedAt": "2026-11-04",
       "note": null,
-      "order": 43
+      "order": 44
     }
   ]
 }

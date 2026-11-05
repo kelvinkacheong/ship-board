@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T07:49:10.000Z",
+  "lastUpdated": "2026-11-05T15:50:32+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -760,11 +760,11 @@
       "id": "task-038",
       "title": "Brief ops team on SOP",
       "tags": [],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [],
       "dueDate": "2026-11-04",
-      "completedAt": null,
+      "completedAt": "2026-11-05",
       "note": null,
       "order": 31
     },
@@ -1019,6 +1019,87 @@
       "completedAt": "2026-11-04",
       "note": null,
       "order": 44
+    },
+    {
+      "id": "task-052",
+      "title": "App checkout packages long loading time issue",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "Potential fix to note",
+      "order": 45
+    },
+    {
+      "id": "task-053",
+      "title": "Checkout packages need photo field",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "Potential fix to note",
+      "order": 46
+    },
+    {
+      "id": "task-054",
+      "title": "Notes upload enhancement",
+      "tags": [
+        "Portal"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 47
+    },
+    {
+      "id": "task-055",
+      "title": "Breakfast combo for CBRE",
+      "tags": [
+        "App",
+        "CBRE"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 48
     }
   ]
 }

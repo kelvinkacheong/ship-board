@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T11:04:34+08:00",
+  "lastUpdated": "2026-11-06T11:05:14+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -932,8 +932,8 @@
       "tags": [
         "App"
       ],
-      "status": "in_progress",
-      "progress": 50,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",
@@ -942,7 +942,7 @@
         }
       ],
       "dueDate": "2026-11-06",
-      "completedAt": null,
+      "completedAt": "2026-11-06",
       "note": null,
       "order": 40
     },

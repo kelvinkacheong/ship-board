@@ -852,8 +852,8 @@
       "tags": [
         "Backend"
       ],
-      "status": "in_progress",
-      "progress": 90,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -862,7 +862,7 @@
         }
       ],
       "dueDate": "2026-11-06",
-      "completedAt": null,
+      "completedAt": "2026-11-06",
       "note": null,
       "order": 36
     },

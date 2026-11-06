@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T11:05:14+08:00",
+  "lastUpdated": "2026-11-06T11:16:28+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1120,6 +1120,26 @@
       "completedAt": null,
       "note": null,
       "order": 49
+    },
+    {
+      "id": "task-057",
+      "title": "Fill in info page bug for new users",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 50
     }
   ]
 }

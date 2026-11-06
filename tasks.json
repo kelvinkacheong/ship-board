@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-05T15:50:32+08:00",
+  "lastUpdated": "2026-11-06T11:04:34+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1100,6 +1100,26 @@
       "completedAt": null,
       "note": null,
       "order": 48
+    },
+    {
+      "id": "task-056",
+      "title": "Add phone number field",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 49
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T14:15:58+08:00",
+  "lastUpdated": "2026-11-06T14:26:32+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1140,6 +1140,26 @@
       "completedAt": null,
       "note": null,
       "order": 50
+    },
+    {
+      "id": "task-058",
+      "title": "Update Nov - Jan calendar on website for Noir",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-07",
+      "completedAt": null,
+      "note": null,
+      "order": 51
     }
   ]
 }

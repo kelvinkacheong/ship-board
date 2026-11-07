@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T15:49:21+08:00",
+  "lastUpdated": "2026-11-07T16:47:45+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1160,6 +1160,26 @@
       "completedAt": null,
       "note": null,
       "order": 51
+    },
+    {
+      "id": "task-059",
+      "title": "Enable lesson page for Nomad too",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 52
     }
   ]
 }

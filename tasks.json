@@ -1143,12 +1143,12 @@
     },
     {
       "id": "task-058",
-      "title": "Update Nov - Jan calendar on website for Noir",
+      "title": "Update Nov - Jan calendar on website for Corporate",
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1157,7 +1157,7 @@
         }
       ],
       "dueDate": "2026-11-07",
-      "completedAt": null,
+      "completedAt": "2026-11-07",
       "note": null,
       "order": 51
     },

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-08T22:21:45+08:00",
+  "lastUpdated": "2026-11-08T22:22:19+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1198,6 +1198,26 @@
       "completedAt": null,
       "note": null,
       "order": 53
+    },
+    {
+      "id": "task-061",
+      "title": "Explore redemption code with empty vouchers",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 54
     }
   ]
 }

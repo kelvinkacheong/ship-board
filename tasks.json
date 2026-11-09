@@ -1185,7 +1185,7 @@
       "id": "task-060",
       "title": "Check AI-coffee image generation enhancement",
       "tags": [],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1195,7 +1195,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-09",
       "note": null,
       "order": 53
     },

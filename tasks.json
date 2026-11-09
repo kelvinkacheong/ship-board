@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-08T22:22:19+08:00",
+  "lastUpdated": "2026-11-09T16:58:26+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1218,6 +1218,26 @@
       "completedAt": null,
       "note": null,
       "order": 54
+    },
+    {
+      "id": "task-062",
+      "title": "Remove redundant structure for course group tag under Course",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 55
     }
   ]
 }

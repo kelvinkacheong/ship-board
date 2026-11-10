@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-09T16:58:26+08:00",
+  "lastUpdated": "2026-11-10T12:03:25+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1238,6 +1238,26 @@
       "completedAt": null,
       "note": null,
       "order": 55
+    },
+    {
+      "id": "task-063",
+      "title": "Fix timezone bug",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 56
     }
   ]
 }

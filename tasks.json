@@ -1241,12 +1241,12 @@
     },
     {
       "id": "task-063",
-      "title": "Fix timezone bug",
+      "title": "Investigate timezone bug",
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -1255,7 +1255,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-10",
       "note": null,
       "order": 56
     }

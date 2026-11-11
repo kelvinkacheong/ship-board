@@ -28,6 +28,34 @@
     min-height: 100vh;
     padding: 24px;
   }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -24px -24px 20px;
+    padding: 10px 24px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav a {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.2;
+    transition: all 0.15s;
+  }
+  .site-nav a:hover { background: #f3f4f6; }
+  .site-nav a[aria-current="page"] {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
   header {
     display: flex;
     align-items: center;
@@ -72,7 +100,7 @@
     gap: 14px;
     overflow-x: auto;
     padding-bottom: 8px;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 200px);
     align-items: start;
   }
   .column {
@@ -81,7 +109,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 180px);
+    max-height: calc(100vh - 220px);
     min-height: 300px;
   }
   .column-header {
@@ -541,6 +569,10 @@
 </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="Pages">
+    <a href="/ship-board/" aria-current="page">Tech Team Work Progress Board</a>
+    <a href="/ship-board/aws-infrastructure/">AWS Infrastructure</a>
+  </nav>
   <header>
     <h1>Tech Team Work Progress Board</h1>
     <div class="header-right">

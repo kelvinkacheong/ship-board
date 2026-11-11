@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-11T11:14:43+08:00",
+  "lastUpdated": "2026-11-11T11:49:24+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1301,6 +1301,28 @@
       "completedAt": null,
       "note": null,
       "order": 58
+    },
+    {
+      "id": "task-066",
+      "title": "Enable PST & PPS event credit booking feature on app",
+      "tags": [
+        "App",
+        "Backend",
+        "Portal"
+      ],
+      "status": "in_progress",
+      "progress": 50,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 59
     }
   ]
 }

@@ -968,7 +968,7 @@
       "id": "task-049",
       "title": "Reject checkout for inactive users",
       "tags": [],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -978,7 +978,7 @@
         }
       ],
       "dueDate": "2026-11-11",
-      "completedAt": null,
+      "completedAt": "2026-11-11",
       "note": null,
       "order": 42
     },
@@ -1107,7 +1107,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1117,7 +1117,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-11",
       "note": null,
       "order": 49
     },
@@ -1205,7 +1205,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1215,7 +1215,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-11",
       "note": null,
       "order": 54
     },
@@ -1265,7 +1265,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1275,7 +1275,7 @@
         }
       ],
       "dueDate": "2026-11-11",
-      "completedAt": null,
+      "completedAt": "2026-11-11",
       "note": null,
       "order": 57
     }

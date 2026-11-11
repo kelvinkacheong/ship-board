@@ -130,13 +130,40 @@
   }
   .here { color: var(--primary); margin-top: 2px; }
 
-  .room {
+  .frame {
     position: relative;
+    border: 1.5px dashed #98a2b3;
+    border-radius: 8px;
     background: var(--surface);
-    border-radius: 16px;
-    box-shadow: 0 0 0 1px var(--ring), var(--shadow);
+    padding: 26px 20px 20px;
   }
-  .org { padding: 22px 22px 20px; }
+  .frame-tag {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    background: var(--tag-bg, var(--bg));
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .org { --tag-bg: var(--bg); }
+  .member {
+    --tag-bg: var(--surface);
+    margin-top: 18px;
+    background: var(--bg);
+  }
+  .cluster {
+    --tag-bg: var(--bg);
+    margin-top: 18px;
+    border-color: var(--primary);
+    background: var(--surface);
+  }
+  .cluster > .frame-tag { color: var(--primary); }
   .room-head { display: flex; flex-direction: column; gap: 4px; }
   .kind {
     font-size: 11px;
@@ -160,63 +187,6 @@
     font-weight: 400;
     line-height: 1.45;
     color: var(--muted);
-  }
-
-  .guide {
-    width: 1px;
-    height: 28px;
-    margin: 14px auto 12px;
-    background: rgba(31, 35, 40, 0.28);
-    position: relative;
-  }
-  .guide::before,
-  .guide::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 7px;
-    height: 7px;
-    margin-left: -3px;
-    border-radius: 50%;
-    background: var(--surface);
-    box-shadow: 0 0 0 1.5px var(--primary);
-  }
-  .guide::before { top: -3px; }
-  .guide::after { bottom: -3px; box-shadow: 0 0 0 1.5px #98a2b3; }
-
-  .sheets {
-    position: relative;
-    height: 22px;
-    margin: 2px 34px 0;
-    z-index: 0;
-  }
-  .sheets span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 8px;
-    height: 18px;
-    border-radius: 12px 12px 4px 4px;
-    background: #f8fafc;
-    box-shadow: 0 0 0 1px var(--ring), 0 1px 2px rgba(0, 0, 0, 0.04);
-  }
-  .sheets span:first-child {
-    left: 18px;
-    right: 18px;
-    top: 0;
-    background: #d5deea;
-  }
-
-  .member { position: relative; z-index: 1; margin-top: -12px; padding: 18px 18px 16px; }
-  .cluster {
-    margin-top: 0;
-    padding: 16px;
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
-      rgba(46, 144, 250, 0.04);
-    box-shadow: 0 0 0 1.5px var(--primary), 0 1px 2px rgba(0, 0, 0, 0.04), 0 16px 36px -24px rgba(46, 144, 250, 0.45);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
   }
 
   .rail-wrap {
@@ -305,17 +275,17 @@
   .service .role { max-width: 26ch; }
 
   .callout {
-    position: absolute;
+    position: static;
+    display: block;
     z-index: 4;
-    left: 0;
-    right: 0;
-    top: calc(100% + 8px);
-    width: auto;
-    padding: 8px 10px;
-    border: 1px dashed rgba(46, 144, 250, 0.75);
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    border: 1px dashed transparent;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.97);
-    box-shadow: 0 10px 24px -14px rgba(16, 24, 40, 0.35);
+    box-shadow: none;
     font-size: 12px;
     font-weight: 400;
     line-height: 1.4;
@@ -323,16 +293,20 @@
     text-align: left;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.15s linear, transform 0.15s linear;
+    transform: none;
+    transition: opacity 0.15s linear, max-height 0.15s linear, margin-top 0.15s linear;
   }
   .rail .callout {
-    left: auto;
+    position: absolute;
     right: 0;
-    top: auto;
     bottom: calc(100% + 8px);
     width: max-content;
     max-width: 260px;
+    max-height: none;
+    overflow: visible;
+    margin-top: 0;
+    padding: 8px 10px;
+    border-color: rgba(46, 144, 250, 0.75);
     transform: translateY(4px);
   }
   .callout b {
@@ -346,8 +320,11 @@
   }
   .service:hover .callout,
   .service:focus-visible .callout {
+    max-height: 8em;
+    margin-top: 10px;
+    padding: 8px 10px;
+    border-color: rgba(46, 144, 250, 0.75);
     opacity: 1;
-    transform: translateY(0);
   }
   .rail:hover .callout,
   .rail:focus-visible .callout {
@@ -380,26 +357,19 @@
     .route li { justify-content: flex-start; padding: 0 0 0 28px; }
     .dot { left: 0; top: 4px; margin-left: 0; }
     .station { align-items: flex-start; text-align: left; }
-    .org, .member, .cluster { padding: 16px; }
-    .sheets { margin-left: 18px; margin-right: 18px; }
+    .org, .member, .cluster { padding: 22px 14px 14px; }
+    .member, .cluster { margin-top: 16px; }
     .services { grid-template-columns: 1fr; }
-    .service .callout,
     .rail .callout {
       position: static;
-      display: block;
       width: auto;
       max-width: none;
       max-height: 0;
-      margin-top: 0;
+      overflow: hidden;
       padding: 0 10px;
       border-color: transparent;
-      overflow: hidden;
-      opacity: 0;
       transform: none;
-      box-shadow: none;
     }
-    .service:hover .callout,
-    .service:focus-visible .callout,
     .rail:hover .callout,
     .rail:focus-visible .callout {
       max-height: 8em;
@@ -446,25 +416,22 @@
       </ol>
     </nav>
 
-    <section class="room org appear" style="--d: 80ms">
+    <section class="frame org appear" style="--d: 80ms">
+      <p class="frame-tag">Organization</p>
       <header class="room-head">
-        <p class="kind">Organization</p>
         <h1>Preface Professional Services</h1>
       </header>
-      <div class="guide" aria-hidden="true"></div>
 
-      <div class="sheets appear" style="--d: 150ms" aria-hidden="true"><span></span><span></span></div>
-      <section class="room member appear" style="--d: 170ms">
+      <section class="frame member appear" style="--d: 170ms">
+        <p class="frame-tag">Member account</p>
         <header class="room-head">
-          <p class="kind">Member account</p>
           <h2>Preface Operations</h2>
           <p class="role">Holds all infrastructure</p>
         </header>
-        <div class="guide" aria-hidden="true"></div>
 
-        <section class="room cluster appear" style="--d: 250ms">
+        <section class="frame cluster appear" style="--d: 250ms">
+          <p class="frame-tag">ECS cluster</p>
           <header class="room-head">
-            <p class="kind">ECS cluster</p>
             <h2>ECS</h2>
           </header>
 

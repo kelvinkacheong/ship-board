@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AWS Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232e90fa%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237a5af8%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22url%28%23g%29%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2243%22%20font-family%3D%22Inter%2CSegoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3ETT%3C/text%3E%3C/svg%3E" />
 <style>
   :root {
@@ -11,6 +14,7 @@
     --surface: #ffffff;
     --border: #e4e7ec;
     --text: #1f2328;
+    --muted: #667085;
     --primary: #2e90fa;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,13 +24,14 @@
     color: var(--text);
     min-height: 100vh;
     padding: 24px;
+    -webkit-font-smoothing: antialiased;
   }
   .site-nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin: -24px -24px 20px;
+    margin: -24px -24px 28px;
     padding: 10px 24px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -41,7 +46,7 @@
     color: var(--text);
     text-decoration: none;
     line-height: 1.2;
-    transition: all 0.15s;
+    transition: background 0.15s;
   }
   .site-nav a:hover { background: #f3f4f6; }
   .site-nav a[aria-current="page"] {
@@ -49,10 +54,206 @@
     color: #fff;
     border-color: var(--primary);
   }
-  main h1 {
-    font-size: 20px;
-    font-weight: 700;
+  .site-nav a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  .flow-scroll { width: 100%; }
+  .flow {
+    max-width: 1040px;
+    margin: 8px auto 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .node {
+    width: min(100%, 340px);
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: var(--surface);
+    text-align: center;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.05),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 16px 36px -22px rgba(16, 24, 40, 0.18);
+  }
+  .node h1,
+  .node h2,
+  .node h3 {
+    font-size: 18px;
+    font-weight: 600;
     letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .node p {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .node:hover {
+    box-shadow:
+      0 0 0 1px rgba(46, 144, 250, 0.45),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 18px 36px -18px rgba(46, 144, 250, 0.4);
+  }
+  .node.blocked {
+    background: #fff6f6;
+    box-shadow:
+      0 0 0 1px rgba(180, 35, 24, 0.45),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 16px 36px -22px rgba(180, 35, 24, 0.28);
+  }
+  .node.blocked:hover {
+    box-shadow:
+      0 0 0 1px rgba(180, 35, 24, 0.7),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 18px 36px -18px rgba(180, 35, 24, 0.35);
+  }
+  .stamp {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 8px;
+    position: relative;
+  }
+  .stamp::before,
+  .stamp::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 15px;
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
+    background: #d92d20;
+  }
+  .stamp::before { transform: rotate(45deg); }
+  .stamp::after { transform: rotate(-45deg); }
+  .node.blocked .state {
+    color: #b42318;
+    font-weight: 600;
+  }
+
+  .edge {
+    width: 2px;
+    height: 28px;
+    margin-bottom: 7px;
+    background: var(--primary);
+    position: relative;
+    flex: none;
+  }
+  .edge::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--primary);
+  }
+
+  .fork {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .stem {
+    width: 2px;
+    height: 22px;
+    background: var(--primary);
+    flex: none;
+  }
+  .children {
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    position: relative;
+    gap: 0;
+  }
+  .children::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 2px;
+    background: var(--primary);
+  }
+  .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pair::before { left: 25%; right: 25%; }
+  .pair > li > .node { max-width: 280px; }
+  .children li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    padding: 0 10px;
+  }
+  .children .node {
+    width: 100%;
+    max-width: 240px;
+  }
+  .children .node h3 { font-size: 16px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .node { transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s linear; }
+    .node:hover { transform: translateY(-3px); }
+  }
+
+  @media (max-width: 720px) {
+    .node h1,
+    .node h2 { font-size: 16px; }
+    .pair > li { padding: 0 6px; }
+    .pair > li > .node { max-width: none; }
+    .services {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+    .services::before {
+      left: 0;
+      right: auto;
+      top: 14px;
+      bottom: 14px;
+      width: 2px;
+      height: auto;
+    }
+    .services li {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      padding: 6px 0 6px 0;
+    }
+    .services .edge {
+      width: 18px;
+      height: 2px;
+      margin: 0 8px 0 0;
+    }
+    .services .edge::after {
+      left: auto;
+      right: -6px;
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 6px solid var(--primary);
+    }
+    .services .node {
+      flex: 1;
+      width: auto;
+      max-width: none;
+      text-align: left;
+      padding: 10px 10px;
+    }
+    .services .node h3 { font-size: 13px; }
   }
 </style>
 </head>
@@ -61,8 +262,61 @@
     <a href="/ship-board/">Tech Team Work Progress Board</a>
     <a href="/ship-board/aws-infrastructure/" aria-current="page">AWS Infrastructure</a>
   </nav>
-  <main>
-    <h1>Hello World</h1>
+
+  <div class="flow-scroll">
+  <main class="flow" aria-label="AWS infrastructure">
+    <article class="node">
+      <h1>Preface Professional Services</h1>
+      <p>Root account</p>
+    </article>
+    <div class="edge" aria-hidden="true"></div>
+    <article class="node">
+      <h2>Preface Operations</h2>
+      <p>Member account</p>
+    </article>
+    <div class="fork">
+      <div class="stem" aria-hidden="true"></div>
+      <ul class="children pair">
+        <li>
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node">
+            <h2>ECS</h2>
+          </article>
+          <div class="fork">
+            <div class="stem" aria-hidden="true"></div>
+            <ul class="children services">
+              <li>
+                <div class="edge" aria-hidden="true"></div>
+                <article class="node">
+                  <h3>LiteLLM backend</h3>
+                </article>
+              </li>
+              <li>
+                <div class="edge" aria-hidden="true"></div>
+                <article class="node">
+                  <h3>LiteLLM gateway</h3>
+                </article>
+              </li>
+              <li>
+                <div class="edge" aria-hidden="true"></div>
+                <article class="node">
+                  <h3>LiteLLM UI</h3>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node blocked">
+            <div class="stamp" aria-hidden="true"></div>
+            <h2>AWS Bedrock</h2>
+            <p class="state">Blocked</p>
+          </article>
+        </li>
+      </ul>
+    </div>
   </main>
+  </div>
 </body>
 </html>

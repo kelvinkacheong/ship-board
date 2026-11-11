@@ -59,8 +59,9 @@
     outline-offset: 3px;
   }
 
+  .flow-scroll { width: 100%; }
   .flow {
-    max-width: 860px;
+    max-width: 1040px;
     margin: 8px auto 56px;
     display: flex;
     flex-direction: column;
@@ -97,6 +98,42 @@
       0 0 0 1px rgba(46, 144, 250, 0.45),
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 18px 36px -18px rgba(46, 144, 250, 0.4);
+  }
+  .node.blocked {
+    background: #fff6f6;
+    box-shadow:
+      0 0 0 1px rgba(180, 35, 24, 0.45),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 16px 36px -22px rgba(180, 35, 24, 0.28);
+  }
+  .node.blocked:hover {
+    box-shadow:
+      0 0 0 1px rgba(180, 35, 24, 0.7),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 18px 36px -18px rgba(180, 35, 24, 0.35);
+  }
+  .stamp {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 8px;
+    position: relative;
+  }
+  .stamp::before,
+  .stamp::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 15px;
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
+    background: #d92d20;
+  }
+  .stamp::before { transform: rotate(45deg); }
+  .stamp::after { transform: rotate(-45deg); }
+  .node.blocked .state {
+    color: #b42318;
+    font-weight: 600;
   }
 
   .edge {
@@ -147,6 +184,9 @@
     height: 2px;
     background: var(--primary);
   }
+  .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pair::before { left: 25%; right: 25%; }
+  .pair > li > .node { max-width: 280px; }
   .children li {
     display: flex;
     flex-direction: column;
@@ -167,12 +207,53 @@
 
   @media (max-width: 720px) {
     .node h1,
-    .node h2,
-    .node h3 { font-size: 16px; }
-    .children { gap: 0; }
-    .children li { padding: 0 6px; }
-    .children .node h3 { font-size: 14px; }
-    .children .node { padding: 12px 8px; }
+    .node h2 { font-size: 16px; }
+    .pair > li { padding: 0 6px; }
+    .pair > li > .node { max-width: none; }
+    .services {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+    .services::before {
+      left: 0;
+      right: auto;
+      top: 14px;
+      bottom: 14px;
+      width: 2px;
+      height: auto;
+    }
+    .services li {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      padding: 6px 0 6px 0;
+    }
+    .services .edge {
+      width: 18px;
+      height: 2px;
+      margin: 0 8px 0 0;
+    }
+    .services .edge::after {
+      left: auto;
+      right: -6px;
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 6px solid var(--primary);
+    }
+    .services .node {
+      flex: 1;
+      width: auto;
+      max-width: none;
+      text-align: left;
+      padding: 10px 10px;
+    }
+    .services .node h3 { font-size: 13px; }
   }
 </style>
 </head>
@@ -182,6 +263,7 @@
     <a href="/ship-board/aws-infrastructure/" aria-current="page">AWS Infrastructure</a>
   </nav>
 
+  <div class="flow-scroll">
   <main class="flow" aria-label="AWS infrastructure">
     <article class="node">
       <h1>Preface Professional Services</h1>
@@ -192,33 +274,49 @@
       <h2>Preface Operations</h2>
       <p>Member account</p>
     </article>
-    <div class="edge" aria-hidden="true"></div>
-    <article class="node">
-      <h2>ECS</h2>
-    </article>
     <div class="fork">
       <div class="stem" aria-hidden="true"></div>
-      <ul class="children">
+      <ul class="children pair">
         <li>
           <div class="edge" aria-hidden="true"></div>
           <article class="node">
-            <h3>LiteLLM backend</h3>
+            <h2>ECS</h2>
           </article>
+          <div class="fork">
+            <div class="stem" aria-hidden="true"></div>
+            <ul class="children services">
+              <li>
+                <div class="edge" aria-hidden="true"></div>
+                <article class="node">
+                  <h3>LiteLLM backend</h3>
+                </article>
+              </li>
+              <li>
+                <div class="edge" aria-hidden="true"></div>
+                <article class="node">
+                  <h3>LiteLLM gateway</h3>
+                </article>
+              </li>
+              <li>
+                <div class="edge" aria-hidden="true"></div>
+                <article class="node">
+                  <h3>LiteLLM UI</h3>
+                </article>
+              </li>
+            </ul>
+          </div>
         </li>
         <li>
           <div class="edge" aria-hidden="true"></div>
-          <article class="node">
-            <h3>LiteLLM gateway</h3>
-          </article>
-        </li>
-        <li>
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node">
-            <h3>LiteLLM UI</h3>
+          <article class="node blocked">
+            <div class="stamp" aria-hidden="true"></div>
+            <h2>AWS Bedrock</h2>
+            <p class="state">Blocked</p>
           </article>
         </li>
       </ul>
     </div>
   </main>
+  </div>
 </body>
 </html>

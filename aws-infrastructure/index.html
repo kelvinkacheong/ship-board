@@ -16,17 +16,11 @@
     --text: #1f2328;
     --muted: #667085;
     --primary: #2e90fa;
-    --ring: rgba(0, 0, 0, 0.05);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 18px 40px -22px rgba(16, 24, 40, 0.18);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    background-color: var(--bg);
-    background-image:
-      linear-gradient(rgba(46, 144, 250, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(46, 144, 250, 0.045) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background: var(--bg);
     color: var(--text);
     min-height: 100vh;
     padding: 24px;
@@ -37,7 +31,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin: -24px -24px 20px;
+    margin: -24px -24px 28px;
     padding: 10px 24px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -60,325 +54,125 @@
     color: #fff;
     border-color: var(--primary);
   }
-  .site-nav a:focus-visible,
-  .service:focus-visible,
-  .rail:focus-visible {
+  .site-nav a:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
   }
 
-  .map {
-    max-width: 960px;
-    margin: 8px auto 48px;
-  }
-
-  .route { margin: 4px 8px 28px; }
-  .route ol {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    list-style: none;
-  }
-  .route ol::before {
-    content: "";
-    position: absolute;
-    left: 16.66%;
-    right: 16.66%;
-    top: 6px;
-    height: 2px;
-    border-radius: 99px;
-    background: var(--primary);
-  }
-  .route li { position: relative; display: flex; justify-content: center; padding-top: 26px; }
-  .station {
+  .flow {
+    max-width: 860px;
+    margin: 8px auto 56px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 2px;
-    max-width: 200px;
   }
-  .dot {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 14px;
-    height: 14px;
-    margin-left: -7px;
-    border-radius: 50%;
-    background: var(--surface);
-    box-shadow: 0 0 0 3px var(--primary);
-  }
-  .station[aria-current="location"] .dot {
-    background: var(--primary);
-    box-shadow: 0 0 0 4px rgba(46, 144, 250, 0.18);
-  }
-  .station-name {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-  }
-  .station[aria-current="location"] .station-name { color: var(--primary); }
-  .station-kind,
-  .here {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .here { color: var(--primary); margin-top: 2px; }
-
-  .frame {
-    position: relative;
-    border: 1.5px dashed #98a2b3;
-    border-radius: 8px;
-    background: var(--surface);
-    padding: 26px 20px 20px;
-  }
-  .frame-tag {
-    position: absolute;
-    top: 0;
-    left: 16px;
-    transform: translateY(-50%);
-    padding: 0 8px;
-    background: var(--tag-bg, var(--bg));
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-  .org { --tag-bg: var(--bg); }
-  .member {
-    --tag-bg: var(--surface);
-    margin-top: 18px;
-    background: var(--bg);
-  }
-  .cluster {
-    --tag-bg: var(--bg);
-    margin-top: 18px;
-    border-color: var(--primary);
-    background: var(--surface);
-  }
-  .cluster > .frame-tag { color: var(--primary); }
-  .room-head { display: flex; flex-direction: column; gap: 4px; }
-  .kind {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .room-head h1,
-  .room-head h2,
-  .rail h3,
-  .service h3 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-  }
-  .room-head h1 { font-size: 20px; }
-  .room-head h2 { font-size: 18px; }
-  .role {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.45;
-    color: var(--muted);
-  }
-
-  .rail-wrap {
-    position: relative;
-    margin-top: 16px;
-    padding-left: 16px;
-  }
-  .rail-line {
-    position: absolute;
-    left: 0;
-    top: 4px;
-    bottom: 8px;
-    width: 2px;
-    border-radius: 99px;
-    background: var(--primary);
-  }
-  .rail {
-    position: relative;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-    padding: 2px 2px 12px;
-    border-bottom: 1px solid rgba(46, 144, 250, 0.28);
-  }
-  .rail h3 { font-size: 16px; }
-  .rail-label {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-
-  .services {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    list-style: none;
-  }
-  .services li { display: flex; min-width: 0; }
-  .service {
-    position: relative;
-    flex: 1;
-    width: 100%;
-    padding: 14px 14px 16px;
+  .node {
+    width: min(100%, 340px);
+    padding: 16px 18px;
     border-radius: 14px;
     background: var(--surface);
-    box-shadow: 0 0 0 1px var(--ring), 0 1px 2px rgba(0, 0, 0, 0.04), 0 14px 32px -22px rgba(16, 24, 40, 0.16);
-    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    text-align: center;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.05),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 16px 36px -22px rgba(16, 24, 40, 0.18);
   }
-  .service::before,
-  .service::after {
+  .node h1,
+  .node h2,
+  .node h3 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .node p {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .node:hover {
+    box-shadow:
+      0 0 0 1px rgba(46, 144, 250, 0.45),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 18px 36px -18px rgba(46, 144, 250, 0.4);
+  }
+
+  .edge {
+    width: 2px;
+    height: 28px;
+    margin-bottom: 7px;
+    background: var(--primary);
+    position: relative;
+    flex: none;
+  }
+  .edge::after {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s linear;
+    left: 50%;
+    bottom: -7px;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--primary);
   }
-  .service::before {
-    padding: 1px;
-    background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 18%), var(--primary), rgba(0, 0, 0, 0.08) 55%);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    mask-composite: exclude;
-  }
-  .service::after {
-    background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 18%), rgba(46, 144, 250, 0.14), transparent 62%);
-  }
-  .service > * { position: relative; z-index: 1; }
-  .service:hover,
-  .service:focus-visible {
-    transform: translateY(-6px);
-    box-shadow:
-      0 0 0 1px rgba(46, 144, 250, 0.2),
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 22px 40px -18px rgba(46, 144, 250, 0.45);
-  }
-  .service:hover::before,
-  .service:focus-visible::before,
-  .service:hover::after,
-  .service:focus-visible::after { opacity: 1; }
-  .service h3 { font-size: 16px; margin: 6px 0 6px; }
-  .service .role { max-width: 26ch; }
 
-  .callout {
-    position: static;
-    display: block;
-    z-index: 4;
-    max-height: 0;
-    margin-top: 0;
-    overflow: hidden;
-    padding: 0 10px;
-    border: 1px dashed transparent;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.97);
-    box-shadow: none;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--text);
-    text-align: left;
-    pointer-events: none;
-    opacity: 0;
-    transform: none;
-    transition: opacity 0.15s linear, max-height 0.15s linear, margin-top 0.15s linear;
+  .fork {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .rail .callout {
+  .stem {
+    width: 2px;
+    height: 22px;
+    background: var(--primary);
+    flex: none;
+  }
+  .children {
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    position: relative;
+    gap: 0;
+  }
+  .children::before {
+    content: "";
     position: absolute;
-    right: 0;
-    bottom: calc(100% + 8px);
-    width: max-content;
-    max-width: 260px;
-    max-height: none;
-    overflow: visible;
-    margin-top: 0;
-    padding: 8px 10px;
-    border-color: rgba(46, 144, 250, 0.75);
-    transform: translateY(4px);
+    top: 0;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 2px;
+    background: var(--primary);
   }
-  .callout b {
-    display: block;
-    margin-bottom: 2px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--primary);
+  .children li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    padding: 0 10px;
   }
-  .service:hover .callout,
-  .service:focus-visible .callout {
-    max-height: 8em;
-    margin-top: 10px;
-    padding: 8px 10px;
-    border-color: rgba(46, 144, 250, 0.75);
-    opacity: 1;
+  .children .node {
+    width: 100%;
+    max-width: 240px;
   }
-  .rail:hover .callout,
-  .rail:focus-visible .callout {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .children .node h3 { font-size: 16px; }
 
   @media (prefers-reduced-motion: no-preference) {
-    .appear {
-      animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
-      animation-delay: var(--d, 0ms);
-    }
-    @keyframes rise {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .service,
-    .service::before,
-    .callout { transition: none; }
-    .service:hover,
-    .service:focus-visible { transform: none; }
+    .node { transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s linear; }
+    .node:hover { transform: translateY(-3px); }
   }
 
   @media (max-width: 720px) {
-    .route { margin-bottom: 22px; }
-    .route ol { display: flex; flex-direction: column; gap: 14px; }
-    .route ol::before { left: 6px; right: auto; top: 8px; bottom: 8px; width: 2px; height: auto; }
-    .route li { justify-content: flex-start; padding: 0 0 0 28px; }
-    .dot { left: 0; top: 4px; margin-left: 0; }
-    .station { align-items: flex-start; text-align: left; }
-    .org, .member, .cluster { padding: 22px 14px 14px; }
-    .member, .cluster { margin-top: 16px; }
-    .services { grid-template-columns: 1fr; }
-    .rail .callout {
-      position: static;
-      width: auto;
-      max-width: none;
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 10px;
-      border-color: transparent;
-      transform: none;
-    }
-    .rail:hover .callout,
-    .rail:focus-visible .callout {
-      max-height: 8em;
-      margin-top: 10px;
-      padding: 8px 10px;
-      border-color: rgba(46, 144, 250, 0.75);
-      opacity: 1;
-      transform: none;
-    }
+    .node h1,
+    .node h2,
+    .node h3 { font-size: 16px; }
+    .children { gap: 0; }
+    .children li { padding: 0 6px; }
+    .children .node h3 { font-size: 14px; }
+    .children .node { padding: 12px 8px; }
   }
 </style>
 </head>
@@ -388,107 +182,43 @@
     <a href="/ship-board/aws-infrastructure/" aria-current="page">AWS Infrastructure</a>
   </nav>
 
-  <main class="map">
-    <nav class="route appear" style="--d: 0ms" aria-label="Path">
-      <ol>
+  <main class="flow" aria-label="AWS infrastructure">
+    <article class="node">
+      <h1>Preface Professional Services</h1>
+      <p>Root account</p>
+    </article>
+    <div class="edge" aria-hidden="true"></div>
+    <article class="node">
+      <h2>Preface Operations</h2>
+      <p>Member account</p>
+    </article>
+    <div class="edge" aria-hidden="true"></div>
+    <article class="node">
+      <h2>ECS</h2>
+    </article>
+    <div class="fork">
+      <div class="stem" aria-hidden="true"></div>
+      <ul class="children">
         <li>
-          <span class="station">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="station-name">Professional Services</span>
-            <span class="station-kind">Organization</span>
-          </span>
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node">
+            <h3>LiteLLM backend</h3>
+          </article>
         </li>
         <li>
-          <span class="station">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="station-name">Operations</span>
-            <span class="station-kind">Member account</span>
-          </span>
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node">
+            <h3>LiteLLM gateway</h3>
+          </article>
         </li>
         <li>
-          <span class="station" aria-current="location">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="station-name">ECS</span>
-            <span class="station-kind">Cluster</span>
-            <span class="here">You are here</span>
-          </span>
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node">
+            <h3>LiteLLM UI</h3>
+          </article>
         </li>
-      </ol>
-    </nav>
-
-    <section class="frame org appear" style="--d: 80ms">
-      <p class="frame-tag">Organization</p>
-      <header class="room-head">
-        <h1>Preface Professional Services</h1>
-      </header>
-
-      <section class="frame member appear" style="--d: 170ms">
-        <p class="frame-tag">Member account</p>
-        <header class="room-head">
-          <h2>Preface Operations</h2>
-          <p class="role">Holds all infrastructure</p>
-        </header>
-
-        <section class="frame cluster appear" style="--d: 250ms">
-          <p class="frame-tag">ECS cluster</p>
-          <header class="room-head">
-            <h2>ECS</h2>
-          </header>
-
-          <div class="rail-wrap appear" style="--d: 330ms">
-            <div class="rail-line" aria-hidden="true"></div>
-            <div class="rail" tabindex="0">
-              <div class="rail-label">
-                <p class="kind">Proxy</p>
-                <h3>LiteLLM</h3>
-              </div>
-              <p class="callout" aria-hidden="true"><b>Proxy</b>Runs in ECS. Backend, gateway, and UI sit on this rail.</p>
-            </div>
-            <ul class="services">
-              <li class="appear" style="--d: 400ms">
-                <article class="service" tabindex="0">
-                  <p class="kind">Service</p>
-                  <h3>LiteLLM backend</h3>
-                  <p class="role">Serves model requests</p>
-                  <p class="callout" aria-hidden="true"><b>Backend</b>Handles model requests behind the proxy.</p>
-                </article>
-              </li>
-              <li class="appear" style="--d: 470ms">
-                <article class="service" tabindex="0">
-                  <p class="kind">Service</p>
-                  <h3>LiteLLM gateway</h3>
-                  <p class="role">Routes traffic into the proxy</p>
-                  <p class="callout" aria-hidden="true"><b>Gateway</b>Front door that sends traffic into LiteLLM.</p>
-                </article>
-              </li>
-              <li class="appear" style="--d: 540ms">
-                <article class="service" tabindex="0">
-                  <p class="kind">Service</p>
-                  <h3>LiteLLM UI</h3>
-                  <p class="role">Console for the proxy</p>
-                  <p class="callout" aria-hidden="true"><b>UI</b>Console for operating the LiteLLM proxy.</p>
-                </article>
-              </li>
-            </ul>
-          </div>
-        </section>
-      </section>
-    </section>
+      </ul>
+    </div>
   </main>
-
-<script>
-(function () {
-  var cards = document.querySelectorAll(".service");
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].addEventListener("pointermove", function (event) {
-      var rect = event.currentTarget.getBoundingClientRect();
-      var x = ((event.clientX - rect.left) / rect.width) * 100;
-      var y = ((event.clientY - rect.top) / rect.height) * 100;
-      event.currentTarget.style.setProperty("--mx", x + "%");
-      event.currentTarget.style.setProperty("--my", y + "%");
-    });
-  }
-})();
-</script>
 </body>
 </html>

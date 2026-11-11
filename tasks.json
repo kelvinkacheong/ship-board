@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-11T09:53:13+08:00",
+  "lastUpdated": "2026-11-11T11:14:43+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1278,6 +1278,29 @@
       "completedAt": "2026-11-11",
       "note": null,
       "order": 57
+    },
+    {
+      "id": "task-065",
+      "title": "Onboard B2B clients to check Claude usage on LiteLLM",
+      "tags": [],
+      "status": "in_progress",
+      "progress": 50,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        },
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 58
     }
   ]
 }

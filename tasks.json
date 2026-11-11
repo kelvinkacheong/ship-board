@@ -597,7 +597,7 @@
       "id": "task-030",
       "title": "Explore connecting LinkedIn to Claude Desktop",
       "tags": [],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -607,7 +607,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-11",
       "note": null,
       "order": 23
     },

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T12:03:25+08:00",
+  "lastUpdated": "2026-11-11T09:53:13+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1258,6 +1258,26 @@
       "completedAt": "2026-11-10",
       "note": null,
       "order": 56
+    },
+    {
+      "id": "task-064",
+      "title": "Add course details in booking page",
+      "tags": [
+        "App"
+      ],
+      "status": "pending_further_actions",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-11",
+      "completedAt": null,
+      "note": null,
+      "order": 57
     }
   ]
 }

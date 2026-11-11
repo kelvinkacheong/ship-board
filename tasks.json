@@ -1046,7 +1046,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1056,7 +1056,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-11",
       "note": "Potential fix to note",
       "order": 46
     },

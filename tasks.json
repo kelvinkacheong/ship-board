@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T11:27:35+08:00",
+  "lastUpdated": "2026-11-12T11:52:58+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1365,6 +1365,26 @@
       "completedAt": null,
       "note": null,
       "order": 61
+    },
+    {
+      "id": "task-069",
+      "title": "Enable multiple user selection when booking",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 62
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T11:54:52+08:00",
+  "lastUpdated": "2026-11-12T11:56:44+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1403,6 +1403,26 @@
       "completedAt": null,
       "note": null,
       "order": 63
+    },
+    {
+      "id": "task-071",
+      "title": "Short course membership pricing minor change",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 64
     }
   ]
 }

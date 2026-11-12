@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-11T11:49:24+08:00",
+  "lastUpdated": "2026-11-12T11:27:35+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1323,6 +1323,48 @@
       "completedAt": null,
       "note": null,
       "order": 59
+    },
+    {
+      "id": "task-067",
+      "title": "Enable 1:1 notes",
+      "tags": [
+        "App",
+        "Portal",
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 60
+    },
+    {
+      "id": "task-068",
+      "title": "Enable event notes",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 61
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T11:52:58+08:00",
+  "lastUpdated": "2026-11-12T11:54:52+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1385,6 +1385,24 @@
       "completedAt": null,
       "note": null,
       "order": 62
+    },
+    {
+      "id": "task-070",
+      "title": "AI coffee project: switch label page layout",
+      "tags": [],
+      "status": "in_progress",
+      "progress": 20,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-13",
+      "completedAt": null,
+      "note": null,
+      "order": 63
     }
   ]
 }

@@ -1283,7 +1283,7 @@
       "id": "task-065",
       "title": "Onboard B2B clients to check Claude usage on LiteLLM",
       "tags": [],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1298,7 +1298,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-12",
       "note": null,
       "order": 58
     },

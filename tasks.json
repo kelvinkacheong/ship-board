@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T11:56:44+08:00",
+  "lastUpdated": "2026-11-12T12:31:28+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1423,6 +1423,26 @@
       "completedAt": null,
       "note": null,
       "order": 64
+    },
+    {
+      "id": "task-072",
+      "title": "Create invitation code for ESF",
+      "tags": [
+        "Portal"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-12",
+      "completedAt": null,
+      "note": null,
+      "order": 65
     }
   ]
 }

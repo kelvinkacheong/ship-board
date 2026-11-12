@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T12:31:28+08:00",
+  "lastUpdated": "2026-11-12T12:33:27+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1425,6 +1425,26 @@
       "completedAt": null,
       "note": null,
       "order": 65
+    },
+    {
+      "id": "task-073",
+      "title": "QR code check-in for events",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 66
     }
   ]
 }

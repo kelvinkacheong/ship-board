@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T18:35:50+08:00",
+  "lastUpdated": "2026-11-13T20:22:02+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1470,6 +1470,26 @@
       "completedAt": null,
       "note": null,
       "order": 67
+    },
+    {
+      "id": "task-075",
+      "title": "Add info form to fill in when registering adults / kids events",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-11-20",
+      "completedAt": null,
+      "note": null,
+      "order": 68
     }
   ]
 }

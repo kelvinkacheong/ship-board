@@ -1392,8 +1392,8 @@
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1402,7 +1402,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-13",
       "note": null,
       "order": 64
     },
@@ -1412,8 +1412,8 @@
       "tags": [
         "Portal"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1422,7 +1422,7 @@
         }
       ],
       "dueDate": "2026-11-12",
-      "completedAt": null,
+      "completedAt": "2026-11-13",
       "note": null,
       "order": 65
     },

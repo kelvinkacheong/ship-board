@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T12:33:27+08:00",
+  "lastUpdated": "2026-11-13T18:35:50+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1445,6 +1445,31 @@
       "completedAt": null,
       "note": null,
       "order": 66
+    },
+    {
+      "id": "task-074",
+      "title": "SQL injection on app",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        },
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 67
     }
   ]
 }

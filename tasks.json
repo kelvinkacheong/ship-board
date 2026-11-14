@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-14T16:52:59+08:00",
+  "lastUpdated": "2026-11-14T16:54:38+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1225,8 +1225,8 @@
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -1235,7 +1235,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-10",
       "note": null,
       "order": 55
     },
@@ -1310,8 +1310,8 @@
         "Backend",
         "Portal"
       ],
-      "status": "in_progress",
-      "progress": 50,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",
@@ -1477,8 +1477,8 @@
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 40,
       "assignees": [
         {
           "name": "Maya",
@@ -1490,6 +1490,26 @@
       "completedAt": null,
       "note": null,
       "order": 68
+    },
+    {
+      "id": "task-076",
+      "title": "bulk add and deactivate users feature",
+      "tags": [
+        "CBRE"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 69
     }
   ]
 }

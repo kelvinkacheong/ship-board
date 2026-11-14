@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T20:22:02+08:00",
+  "lastUpdated": "2026-11-14T16:52:59+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1352,17 +1352,17 @@
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
-          "name": "Kelvin",
-          "initial": "K",
-          "color": "#2e90fa"
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-13",
       "note": null,
       "order": 61
     },

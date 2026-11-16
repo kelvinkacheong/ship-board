@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-15T20:46:06+08:00",
+  "lastUpdated": "2026-11-16T13:55:33+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1167,7 +1167,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1177,7 +1177,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-16",
       "note": null,
       "order": 52
     },
@@ -1310,7 +1310,7 @@
         "Backend",
         "Portal"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1320,7 +1320,7 @@
         }
       ],
       "dueDate": "2026-11-13",
-      "completedAt": null,
+      "completedAt": "2026-11-16",
       "note": null,
       "order": 59
     },

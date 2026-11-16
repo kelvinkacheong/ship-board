@@ -152,6 +152,37 @@
     color: #027a48;
     font-weight: 600;
   }
+  .node.backup {
+    background: #fffaeb;
+    box-shadow:
+      0 0 0 1px rgba(181, 71, 8, 0.45),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 16px 36px -22px rgba(181, 71, 8, 0.28);
+  }
+  .node.backup:hover {
+    box-shadow:
+      0 0 0 1px rgba(181, 71, 8, 0.75),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 18px 36px -18px rgba(181, 71, 8, 0.35);
+  }
+  .node.backup .state {
+    color: #b54708;
+    font-weight: 600;
+  }
+  .node.live.b2b {
+    background: #f5f8ff;
+    box-shadow:
+      inset 3px 0 0 #444ce7,
+      0 0 0 1px rgba(68, 76, 231, 0.35),
+      0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  .node.live.b2b:hover {
+    box-shadow:
+      inset 3px 0 0 #444ce7,
+      0 0 0 1px rgba(68, 76, 231, 0.6),
+      0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  .node.live.b2b p:not(.state) { color: #3538cd; }
   .mark {
     width: 34px;
     height: 34px;
@@ -178,6 +209,26 @@
     border: solid #fff;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+  }
+  .mark.backup::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #dc6803;
+  }
+  .mark.backup::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background: #fff;
   }
 
   .edge {
@@ -230,7 +281,9 @@
   }
   .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pair::before { left: 25%; right: 25%; }
-  .pair > li > .node { max-width: 280px; }
+  .pair > li > .node { max-width: 400px; }
+  .services .node { max-width: none; padding: 14px 14px; }
+  .services .node h3 { font-size: 16px; }
   .children li {
     display: flex;
     flex-direction: column;
@@ -244,39 +297,32 @@
   }
   .children .node h3 { font-size: 16px; }
 
-  /* Operations plus the Bedrock member accounts. Accounts wrap to a second
-     row so the cards stay readable beside the operations tree. */
-  .flow { position: relative; width: 100%; max-width: 1680px; }
+  /* Operations keeps the wide column. Other member accounts stay in a
+     compact side group so they do not squeeze ECS. */
+  .flow { position: relative; width: 100%; max-width: 1480px; }
   .flow-scroll { overflow-x: auto; }
   .node { position: relative; z-index: 1; }
   .children.members {
-    display: grid;
-    grid-template-columns: minmax(560px, 1.2fr) repeat(4, minmax(168px, 200px));
-    grid-template-rows: auto auto;
-    row-gap: 26px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
-    align-items: start;
-    justify-content: start;
   }
   .children.members::before { content: none; }
   .children.members > li { position: relative; }
   .children.members > li.ops {
-    grid-column: 1;
-    grid-row: 1 / span 2;
+    flex: 1 1 auto;
     width: auto;
     min-width: 0;
-    padding: 0 22px 0 0;
+    padding: 0 28px 0 0;
   }
-  .children.members > li.account { width: auto; min-width: 0; padding: 0 6px; }
-  .children.members > li.account:nth-child(2) { grid-area: 1 / 2; }
-  .children.members > li.account:nth-child(3) { grid-area: 1 / 3; }
-  .children.members > li.account:nth-child(4) { grid-area: 1 / 4; }
-  .children.members > li.account:nth-child(5) { grid-area: 1 / 5; }
-  .children.members > li.account:nth-child(6) { grid-area: 2 / 2; }
-  .children.members > li.account:nth-child(7) { grid-area: 2 / 3; }
-  .children.members > li.account:nth-child(8) { grid-area: 2 / 4; }
-  .children.members > li.account:nth-child(5)::before { right: 50%; }
-  .children.members > li.account.below::before { content: none; }
+  .children.members > li.side {
+    flex: 0 0 400px;
+    width: 400px;
+    max-width: 100%;
+    padding: 0;
+    align-items: stretch;
+  }
   .children.members > li::before {
     content: "";
     position: absolute;
@@ -288,6 +334,99 @@
   }
   .children.members > li:first-child::before { left: 50%; }
   .children.members > li:last-child::before { right: 50%; }
+  .side-head {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .groups { width: 100%; }
+  .group { width: 100%; margin-top: 14px; }
+  .group:first-child { margin-top: 0; }
+  .group-label {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    color: #667085;
+  }
+  .group.backup .group-label { color: #b54708; }
+  .group.internal .group-label { color: #344054; }
+  .group.b2b .group-label { color: #3538cd; }
+  .pills {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .pills > li {
+    display: block;
+    padding: 0;
+    min-width: 0;
+  }
+  .pills .node {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr);
+    column-gap: 8px;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    padding: 7px 8px;
+    border-radius: 10px;
+    text-align: left;
+  }
+  .pills .stamp,
+  .pills .mark {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-self: center;
+  }
+  .pills .node h2,
+  .pills .node p { grid-column: 2; }
+  .pills .node h2 {
+    font-size: 12.5px;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+  .pills .node p {
+    margin-top: 0;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  .pills .stamp::before,
+  .pills .stamp::after {
+    left: 1px;
+    top: 7px;
+    width: 14px;
+    height: 2px;
+  }
+  .pills .mark.live::before,
+  .pills .mark.backup::before {
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+  }
+  .pills .mark.live::after {
+    left: 5px;
+    top: 3px;
+    width: 4px;
+    height: 7px;
+    border-width: 0 2px 2px 0;
+  }
+  .pills .mark.backup::after {
+    left: 4px;
+    top: 7px;
+    width: 8px;
+    height: 2px;
+  }
   .ops-head,
   .ops-body {
     width: 100%;
@@ -386,26 +525,28 @@
     .children.members {
       display: flex;
       flex-direction: column;
+      align-items: stretch;
       width: auto;
       margin-left: 36px;
     }
-    .children.members > li.account,
+    .children.members > li.side,
     .children.members > li.ops {
-      grid-area: auto;
-      grid-column: auto;
-      grid-row: auto;
+      width: 100%;
+      max-width: none;
+      flex: none;
+      align-self: stretch;
+      padding: 6px 0;
     }
-    .children.members > li.ops,
-    .children.members > li.account { width: auto; padding: 6px 0; }
+    .pills { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
     .children.members > li::before { content: none; }
     .children.members::before {
       content: "";
       position: absolute;
       left: 0;
       top: 0;
-      bottom: 78px;
+      bottom: auto;
+      height: var(--member-rail, 48px);
       width: 2px;
-      height: auto;
       background: var(--primary);
     }
     .flow > .fork > .stem {
@@ -434,26 +575,22 @@
       height: calc(100% + 1px);
       background: var(--primary);
     }
-    .children.members > li.account {
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-    }
     .children.members > li.ops { align-items: stretch; }
+    .side-head { justify-content: flex-start; }
     .ops-head {
       display: flex;
       flex-direction: row;
       align-items: center;
       width: 100%;
     }
-    .children.members > li.account > .edge,
+    .side-head > .edge,
     .ops-head > .edge {
       width: 18px;
       height: 2px;
       margin: 0 8px 0 0;
       flex: none;
     }
-    .children.members > li.account > .edge::after,
+    .side-head > .edge::after,
     .ops-head > .edge::after {
       left: auto;
       right: -6px;
@@ -465,7 +602,6 @@
       border-bottom: 4px solid transparent;
       border-left: 6px solid var(--primary);
     }
-    .children.members > li.account > .node { flex: 1; width: auto; }
     .ops-body { align-items: stretch; }
     .children.members > li.ops .ops-head > .node { flex: 1; width: auto; max-width: none; }
     .children.members > li.ops > .ops-body > .fork { padding-left: 26px; }
@@ -540,75 +676,176 @@
             </div>
           </div>
         </li>
-        <li class="account">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node blocked" data-bedrock-link>
-            <div class="stamp" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 1</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Blocked</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
-          </article>
-        </li>
-        <li class="account">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node blocked" data-bedrock-link>
-            <div class="stamp" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 2</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Blocked</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
-          </article>
-        </li>
-        <li class="account">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node blocked" data-bedrock-link>
-            <div class="stamp" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 3</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Blocked</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
-          </article>
-        </li>
-        <li class="account">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node blocked" data-bedrock-link>
-            <div class="stamp" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 9</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Blocked</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
-          </article>
-        </li>
-        <li class="account below">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node blocked" data-bedrock-link>
-            <div class="stamp" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 10</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Blocked</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
-          </article>
-        </li>
-        <li class="account below">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node live" data-bedrock-link>
-            <div class="mark live" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 13</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Live</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Live.</p>
-          </article>
-        </li>
-        <li class="account below">
-          <div class="edge" aria-hidden="true"></div>
-          <article class="node live" data-bedrock-link>
-            <div class="mark live" aria-hidden="true"></div>
-            <h2>Preface Bedrock Account 14</h2>
-            <p>Bedrock only · B2C</p>
-            <p class="state">Live</p>
-            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Live.</p>
-          </article>
+        <li class="side">
+          <div class="side-head">
+            <div class="edge" aria-hidden="true"></div>
+          </div>
+          <div class="groups">
+            <section class="group" aria-label="B2C Bedrock accounts">
+              <p class="group-label">B2C</p>
+              <ul class="pills">
+                <li>
+                  <article class="node blocked" data-bedrock-link>
+                    <div class="stamp" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 1</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Blocked</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node blocked" data-bedrock-link>
+                    <div class="stamp" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 2</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Blocked</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node blocked" data-bedrock-link>
+                    <div class="stamp" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 3</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Blocked</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node blocked" data-bedrock-link>
+                    <div class="stamp" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 9</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Blocked</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node blocked" data-bedrock-link>
+                    <div class="stamp" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 10</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Blocked</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node live" data-bedrock-link>
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 13</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Live.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node live" data-bedrock-link>
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 14</h2>
+                    <p>Bedrock only · B2C</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Live.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+            <section class="group backup" aria-label="Backup Bedrock accounts">
+              <p class="group-label">Backup</p>
+              <ul class="pills">
+                <li>
+                  <article class="node backup" data-bedrock-link>
+                    <div class="mark backup" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 8</h2>
+                    <p>Bedrock only</p>
+                    <p class="state">Backup</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Backup.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node backup" data-bedrock-link>
+                    <div class="mark backup" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 12</h2>
+                    <p>Bedrock only</p>
+                    <p class="state">Backup</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Backup.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node backup" data-bedrock-link>
+                    <div class="mark backup" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Account 15</h2>
+                    <p>Bedrock only</p>
+                    <p class="state">Backup</p>
+                    <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Backup.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+            <section class="group internal" aria-label="Internal accounts">
+              <p class="group-label">Internal</p>
+              <ul class="pills">
+                <li>
+                  <article class="node blocked">
+                    <div class="stamp" aria-hidden="true"></div>
+                    <h2>Preface Bedrock Internal Teams</h2>
+                    <p>Internal</p>
+                    <p class="state">Blocked</p>
+                    <p class="sr-only">Member account under the root. Blocked.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node live">
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>Preface Internal Team - v2</h2>
+                    <p>Internal</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. Live.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+            <section class="group b2b" aria-label="B2B client accounts">
+              <p class="group-label">B2B clients</p>
+              <ul class="pills">
+                <li>
+                  <article class="node live b2b">
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>Central Cove Limited</h2>
+                    <p>B2B client</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. B2B client. Live.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node live b2b">
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>Gammon Security &amp; Technology Limited</h2>
+                    <p>B2B client</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. B2B client. Live.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node live b2b">
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>Leap Global Group Limited</h2>
+                    <p>B2B client</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. B2B client. Live.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="node live b2b">
+                    <div class="mark live" aria-hidden="true"></div>
+                    <h2>The Canopy Hong Kong Limited</h2>
+                    <p>B2B client</p>
+                    <p class="state">Live</p>
+                    <p class="sr-only">Member account under the root. B2B client. Live.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+          </div>
         </li>
       </ul>
     </div>
@@ -661,6 +898,12 @@
         if (stacked) {
           root.style.left = "0px";
           stem.style.left = "0px";
+          var members = document.querySelector(".children.members");
+          var edge = document.querySelector("li.side > .side-head > .edge");
+          if (members && edge) {
+            var end = box(edge).top + box(edge).height / 2 - box(members).top;
+            members.style.setProperty("--member-rail", Math.max(24, end) + "px");
+          }
           return true;
         }
         var rowTop = first.top;
@@ -678,83 +921,25 @@
         return false;
       }
 
-      function drawDesktopLinks(fb, tx, ty) {
-        var opsLi = document.querySelector("li.ops");
-        var opsBox = box(opsLi);
-        var boundary = opsBox.right - fb.left;
-        var laneRight = boundary - 4;
-        var laneLeft = tx + 10;
-        if (laneRight - laneLeft < 8) {
-          laneLeft = tx + 6;
-          laneRight = laneLeft + 8;
-        }
-        var linkX = laneLeft;
-        var busX = laneRight;
-        var cards = accounts.map(function (el) { return { el: el, b: box(el) }; });
-        var rowTop = cards[0].b.top;
-        cards.forEach(function (card) { if (card.b.top < rowTop) rowTop = card.b.top; });
-        var row1 = [];
-        var row2 = [];
-        cards.forEach(function (card) {
-          if (card.b.top < rowTop + 40) row1.push(card);
-          else row2.push(card);
+      function linkedSpan(fb) {
+        var top = Infinity;
+        var bottom = 0;
+        var left = Infinity;
+        accounts.forEach(function (el) {
+          var b = box(el);
+          if (b.top < top) top = b.top;
+          if (b.bottom > bottom) bottom = b.bottom;
+          if (b.left < left) left = b.left;
         });
-
-        function extremes(group) {
-          var right = 0;
-          var bottom = 0;
-          var top = Infinity;
-          group.forEach(function (card) {
-            var mid = card.b.left + card.b.width / 2 - fb.left;
-            if (mid > right) right = mid;
-            if (card.b.bottom > bottom) bottom = card.b.bottom;
-            if (card.b.top < top) top = card.b.top;
-          });
-          return { right: right, bottom: bottom, top: top };
-        }
-
-        function dropTo(group, railY) {
-          group.forEach(function (card) {
-            var x = card.b.left + card.b.width / 2 - fb.left;
-            var y = card.b.bottom - fb.top;
-            addPath("M " + x + " " + y + " V " + railY, false, "#b42318", true);
-          });
-        }
-
-        if (!row2.length) {
-          var only = extremes(row1);
-          var railY = Math.max(ty, only.bottom - fb.top + 18);
-          var elbowX = (tx + linkX) / 2;
-          if (elbowX < tx + 12) elbowX = tx + 12;
-          addPath("M " + only.right + " " + railY + " H " + elbowX + " V " + ty + " H " + tx, true, "#b42318", true);
-          dropTo(row1, railY);
-          return;
-        }
-
-        var topRow = extremes(row1);
-        var lowRow = extremes(row2);
-        var gapY = topRow.bottom - fb.top + 10;
-        if (gapY > lowRow.top - fb.top - 18) gapY = topRow.bottom - fb.top + 6;
-        var lowY = lowRow.bottom - fb.top + 16;
-        dropTo(row1, gapY);
-        addPath("M " + topRow.right + " " + gapY + " H " + linkX, false, "#b42318", true);
-        dropTo(row2, lowY);
-        addPath("M " + lowRow.right + " " + lowY + " H " + linkX, false, "#b42318", true);
-        addPath("M " + linkX + " " + lowY + " V " + ty + " H " + tx, true, "#b42318", true);
-
-        var below = document.querySelectorAll("li.account.below");
-        if (below.length) {
-          var firstBelow = box(below[0]);
-          var lastBelow = box(below[below.length - 1]);
-          var busY = firstBelow.top - fb.top;
-          var endX = lastBelow.left + lastBelow.width / 2 - fb.left;
-          var topBusY = opsBox.top - fb.top;
-          addPath("M " + busX + " " + topBusY + " V " + busY + " H " + endX, false, "#2e90fa", false);
-        }
+        return {
+          y1: top - fb.top,
+          y2: bottom - fb.top,
+          cardLeft: left - fb.left
+        };
       }
 
       function draw() {
-        placeRoot();
+        var stacked = placeRoot();
         var fb = box(flow);
         svg.setAttribute("viewBox", "0 0 " + fb.width + " " + fb.height);
         svg.setAttribute("width", String(fb.width));
@@ -764,32 +949,33 @@
         var bb = box(bedrock);
         var tx = bb.right - fb.left;
         var ty = bb.top + bb.height / 2 - fb.top;
-        var ab = accounts.map(box);
-        var stacked = ab[0].top >= bb.bottom - 8;
+        var link = linkedSpan(fb);
+        var join = ty;
+        if (join < link.y1) join = link.y1;
+        if (join > link.y2) join = link.y2;
 
         if (!stacked) {
-          drawDesktopLinks(fb, tx, ty);
+          var gap = link.cardLeft - tx;
+          var gutter = tx + (gap > 0 ? gap * 0.45 : 12);
+          if (gutter > link.cardLeft - 6) gutter = link.cardLeft - 6;
+          if (gutter < tx + 6) gutter = tx + 6;
+          addPath("M " + gutter + " " + link.y1 + " V " + link.y2, false, "#b42318", true);
+          addPath("M " + gutter + " " + join + " H " + tx, true, "#b42318", true);
           return;
         }
 
-        var ops = document.querySelector(".ops-body");
         var members = document.querySelector(".children.members");
+        var ops = document.querySelector(".ops-body");
+        var gutter = box(members).left - fb.left - 16;
+        if (gutter < 4) gutter = 4;
         var ob = box(ops);
         var bx = bb.left + bb.width / 2 - fb.left;
         var by = bb.bottom - fb.top;
-        var gapTop = ob.bottom - fb.top + 8;
-        var gapBottom = ab[0].top - fb.top - 8;
-        var gapY = gapBottom > gapTop ? (gapTop + gapBottom) / 2 : gapTop;
-        var gutter = box(members).left - fb.left - 18;
-        if (gutter < 4) gutter = 4;
-        var last = ab[ab.length - 1];
-        var lastDrop = last.bottom - fb.top + 12;
-        addPath("M " + gutter + " " + lastDrop + " V " + gapY + " H " + bx + " V " + by, true, "#b42318", true);
-        for (var k = 0; k < ab.length; k++) {
-          var ax = ab[k].left + ab[k].width / 2 - fb.left;
-          var ay = ab[k].bottom - fb.top;
-          addPath("M " + ax + " " + ay + " V " + (ay + 12) + " H " + gutter, false, "#b42318", true);
-        }
+        var gapTop = ob.bottom - fb.top + 4;
+        var sideTop = box(document.querySelector("li.side")).top - fb.top;
+        var gapY = sideTop - 14;
+        if (gapY < gapTop) gapY = gapTop;
+        addPath("M " + gutter + " " + link.y2 + " V " + gapY + " H " + bx + " V " + by, true, "#b42318", true);
       }
 
       var pending = false;

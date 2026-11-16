@@ -135,6 +135,50 @@
     color: #b42318;
     font-weight: 600;
   }
+  .node.live {
+    background: #f6fef9;
+    box-shadow:
+      0 0 0 1px rgba(18, 183, 106, 0.5),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 16px 36px -22px rgba(18, 183, 106, 0.28);
+  }
+  .node.live:hover {
+    box-shadow:
+      0 0 0 1px rgba(18, 183, 106, 0.78),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 18px 36px -18px rgba(18, 183, 106, 0.35);
+  }
+  .node.live .state {
+    color: #027a48;
+    font-weight: 600;
+  }
+  .mark {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 8px;
+    position: relative;
+  }
+  .mark.live::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #12b76a;
+  }
+  .mark.live::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 8px;
+    width: 6px;
+    height: 11px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
 
   .edge {
     width: 2px;
@@ -200,20 +244,39 @@
   }
   .children .node h3 { font-size: 16px; }
 
-  /* Four member accounts under the root. The operations column caps at the
-     current tree width and shrinks before the account cards do. */
-  .flow { position: relative; width: 100%; max-width: 1632px; }
+  /* Operations plus the Bedrock member accounts. Accounts wrap to a second
+     row so the cards stay readable beside the operations tree. */
+  .flow { position: relative; width: 100%; max-width: 1680px; }
   .flow-scroll { overflow-x: auto; }
+  .node { position: relative; z-index: 1; }
   .children.members {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(560px, 1.2fr) repeat(4, minmax(168px, 200px));
+    grid-template-rows: auto auto;
+    row-gap: 26px;
     width: 100%;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: start;
+    justify-content: start;
   }
   .children.members::before { content: none; }
   .children.members > li { position: relative; }
-  .children.members > li.ops { flex: 1 1 auto; min-width: 0; width: auto; padding: 0; }
-  .children.members > li.account { flex: none; width: 196px; padding: 0 6px; }
+  .children.members > li.ops {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: auto;
+    min-width: 0;
+    padding: 0 22px 0 0;
+  }
+  .children.members > li.account { width: auto; min-width: 0; padding: 0 6px; }
+  .children.members > li.account:nth-child(2) { grid-area: 1 / 2; }
+  .children.members > li.account:nth-child(3) { grid-area: 1 / 3; }
+  .children.members > li.account:nth-child(4) { grid-area: 1 / 4; }
+  .children.members > li.account:nth-child(5) { grid-area: 1 / 5; }
+  .children.members > li.account:nth-child(6) { grid-area: 2 / 2; }
+  .children.members > li.account:nth-child(7) { grid-area: 2 / 3; }
+  .children.members > li.account:nth-child(8) { grid-area: 2 / 4; }
+  .children.members > li.account:nth-child(5)::before { right: 50%; }
+  .children.members > li.account.below::before { content: none; }
   .children.members > li::before {
     content: "";
     position: absolute;
@@ -321,9 +384,16 @@
   @media (max-width: 1279px) {
     .flow { width: 100%; max-width: 1040px; }
     .children.members {
+      display: flex;
       flex-direction: column;
       width: auto;
       margin-left: 36px;
+    }
+    .children.members > li.account,
+    .children.members > li.ops {
+      grid-area: auto;
+      grid-column: auto;
+      grid-row: auto;
     }
     .children.members > li.ops,
     .children.members > li.account { width: auto; padding: 6px 0; }
@@ -500,6 +570,46 @@
             <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
           </article>
         </li>
+        <li class="account">
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node blocked" data-bedrock-link>
+            <div class="stamp" aria-hidden="true"></div>
+            <h2>Preface Bedrock Account 9</h2>
+            <p>Bedrock only · B2C</p>
+            <p class="state">Blocked</p>
+            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+          </article>
+        </li>
+        <li class="account below">
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node blocked" data-bedrock-link>
+            <div class="stamp" aria-hidden="true"></div>
+            <h2>Preface Bedrock Account 10</h2>
+            <p>Bedrock only · B2C</p>
+            <p class="state">Blocked</p>
+            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Blocked.</p>
+          </article>
+        </li>
+        <li class="account below">
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node live" data-bedrock-link>
+            <div class="mark live" aria-hidden="true"></div>
+            <h2>Preface Bedrock Account 13</h2>
+            <p>Bedrock only · B2C</p>
+            <p class="state">Live</p>
+            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Live.</p>
+          </article>
+        </li>
+        <li class="account below">
+          <div class="edge" aria-hidden="true"></div>
+          <article class="node live" data-bedrock-link>
+            <div class="mark live" aria-hidden="true"></div>
+            <h2>Preface Bedrock Account 14</h2>
+            <p>Bedrock only · B2C</p>
+            <p class="state">Live</p>
+            <p class="sr-only">Member account under the root. Linked to AWS Bedrock in Preface Operations. Live.</p>
+          </article>
+        </li>
       </ul>
     </div>
     <svg class="bedrock-links" aria-hidden="true">
@@ -523,13 +633,13 @@
 
       function box(el) { return el.getBoundingClientRect(); }
 
-      function addPath(d, arrow) {
+      function addPath(d, arrow, color, dashed) {
         var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path.setAttribute("d", d);
         path.setAttribute("fill", "none");
-        path.setAttribute("stroke", "#b42318");
+        path.setAttribute("stroke", color);
         path.setAttribute("stroke-width", "2");
-        path.setAttribute("stroke-dasharray", "5 4");
+        if (dashed) path.setAttribute("stroke-dasharray", "5 4");
         path.setAttribute("stroke-linejoin", "round");
         path.setAttribute("stroke-linecap", "round");
         if (arrow) path.setAttribute("marker-end", "url(#bedrock-arrow)");
@@ -553,12 +663,94 @@
           stem.style.left = "0px";
           return true;
         }
+        var rowTop = first.top;
         var barStart = first.left + first.width / 2 - fb.left;
-        var barEnd = last.left + last.width / 2 - fb.left;
+        var barEnd = barStart;
+        for (var i = 0; i < lis.length; i++) {
+          var rowBox = box(lis[i]);
+          if (rowBox.top > rowTop + 24) continue;
+          var mid = rowBox.left + rowBox.width / 2 - fb.left;
+          if (mid > barEnd) barEnd = mid;
+        }
         var shift = (barStart + barEnd) / 2 - fb.width / 2;
         root.style.left = shift + "px";
         stem.style.left = shift + "px";
         return false;
+      }
+
+      function drawDesktopLinks(fb, tx, ty) {
+        var opsLi = document.querySelector("li.ops");
+        var opsBox = box(opsLi);
+        var boundary = opsBox.right - fb.left;
+        var laneRight = boundary - 4;
+        var laneLeft = tx + 10;
+        if (laneRight - laneLeft < 8) {
+          laneLeft = tx + 6;
+          laneRight = laneLeft + 8;
+        }
+        var linkX = laneLeft;
+        var busX = laneRight;
+        var cards = accounts.map(function (el) { return { el: el, b: box(el) }; });
+        var rowTop = cards[0].b.top;
+        cards.forEach(function (card) { if (card.b.top < rowTop) rowTop = card.b.top; });
+        var row1 = [];
+        var row2 = [];
+        cards.forEach(function (card) {
+          if (card.b.top < rowTop + 40) row1.push(card);
+          else row2.push(card);
+        });
+
+        function extremes(group) {
+          var right = 0;
+          var bottom = 0;
+          var top = Infinity;
+          group.forEach(function (card) {
+            var mid = card.b.left + card.b.width / 2 - fb.left;
+            if (mid > right) right = mid;
+            if (card.b.bottom > bottom) bottom = card.b.bottom;
+            if (card.b.top < top) top = card.b.top;
+          });
+          return { right: right, bottom: bottom, top: top };
+        }
+
+        function dropTo(group, railY) {
+          group.forEach(function (card) {
+            var x = card.b.left + card.b.width / 2 - fb.left;
+            var y = card.b.bottom - fb.top;
+            addPath("M " + x + " " + y + " V " + railY, false, "#b42318", true);
+          });
+        }
+
+        if (!row2.length) {
+          var only = extremes(row1);
+          var railY = Math.max(ty, only.bottom - fb.top + 18);
+          var elbowX = (tx + linkX) / 2;
+          if (elbowX < tx + 12) elbowX = tx + 12;
+          addPath("M " + only.right + " " + railY + " H " + elbowX + " V " + ty + " H " + tx, true, "#b42318", true);
+          dropTo(row1, railY);
+          return;
+        }
+
+        var topRow = extremes(row1);
+        var lowRow = extremes(row2);
+        var gapY = topRow.bottom - fb.top + 10;
+        if (gapY > lowRow.top - fb.top - 18) gapY = topRow.bottom - fb.top + 6;
+        var lowY = lowRow.bottom - fb.top + 16;
+        dropTo(row1, gapY);
+        addPath("M " + topRow.right + " " + gapY + " H " + linkX, false, "#b42318", true);
+        dropTo(row2, lowY);
+        addPath("M " + lowRow.right + " " + lowY + " H " + linkX, false, "#b42318", true);
+        addPath("M " + linkX + " " + lowY + " V " + ty + " H " + tx, true, "#b42318", true);
+
+        var below = document.querySelectorAll("li.account.below");
+        if (below.length) {
+          var firstBelow = box(below[0]);
+          var lastBelow = box(below[below.length - 1]);
+          var busY = firstBelow.top - fb.top;
+          var endX = lastBelow.left + lastBelow.width / 2 - fb.left;
+          var topBusY = opsBox.top - fb.top;
+          addPath("M " + busX + " " + topBusY + " V " + busY + " H " + endX, false, "#2e90fa", false);
+        }
       }
 
       function draw() {
@@ -576,24 +768,7 @@
         var stacked = ab[0].top >= bb.bottom - 8;
 
         if (!stacked) {
-          var lowest = 0;
-          var farX = 0;
-          var nearestLeft = Infinity;
-          for (var i = 0; i < ab.length; i++) {
-            if (ab[i].bottom > lowest) lowest = ab[i].bottom;
-            var mid = ab[i].left + ab[i].width / 2 - fb.left;
-            if (i === ab.length - 1) farX = mid;
-            if (ab[i].left < nearestLeft) nearestLeft = ab[i].left;
-          }
-          var railY = Math.max(ty, lowest - fb.top + 18);
-          var elbowX = (tx + (nearestLeft - fb.left)) / 2;
-          if (elbowX < tx + 16) elbowX = tx + 16;
-          addPath("M " + farX + " " + railY + " H " + elbowX + " V " + ty + " H " + tx, true);
-          for (var j = 0; j < ab.length; j++) {
-            var x = ab[j].left + ab[j].width / 2 - fb.left;
-            var y = ab[j].bottom - fb.top;
-            addPath("M " + x + " " + y + " V " + railY, false);
-          }
+          drawDesktopLinks(fb, tx, ty);
           return;
         }
 
@@ -609,11 +784,11 @@
         if (gutter < 4) gutter = 4;
         var last = ab[ab.length - 1];
         var lastDrop = last.bottom - fb.top + 12;
-        addPath("M " + gutter + " " + lastDrop + " V " + gapY + " H " + bx + " V " + by, true);
+        addPath("M " + gutter + " " + lastDrop + " V " + gapY + " H " + bx + " V " + by, true, "#b42318", true);
         for (var k = 0; k < ab.length; k++) {
           var ax = ab[k].left + ab[k].width / 2 - fb.left;
           var ay = ab[k].bottom - fb.top;
-          addPath("M " + ax + " " + ay + " V " + (ay + 12) + " H " + gutter, false);
+          addPath("M " + ax + " " + ay + " V " + (ay + 12) + " H " + gutter, false, "#b42318", true);
         }
       }
 

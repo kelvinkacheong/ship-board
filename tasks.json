@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T17:39:20+08:00",
+  "lastUpdated": "2026-11-18T17:41:28+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1566,6 +1566,34 @@
       "completedAt": null,
       "note": "Show the student name, event title/date, and fresh/already-checked-in status in the staff scan result. Informative details only\u2014no confirmation preview or expected-event selection; future follow-up, with no booking backfill or time gating and the legacy QR route retained.\nSources: Backend https://github.com/preface-ai/preface-nomad-b/pull/5707; app https://github.com/preface-ai/app/pull/874.",
       "order": 73
+    },
+    {
+      "id": "task-081",
+      "title": "Submit EAS build 1.8.0",
+      "tags": [],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        },
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        },
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-20",
+      "completedAt": null,
+      "note": null,
+      "order": 74
     }
   ]
 }

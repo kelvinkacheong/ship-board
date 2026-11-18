@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-16T13:55:33+08:00",
+  "lastUpdated": "2026-11-18T11:18:36+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1515,11 +1515,17 @@
       "id": "task-077",
       "title": "Rename papp_learn_hsbc_202501_event_voucher_id and API field hsbc_202501_event_voucher_id to New App User Onboarding voucher wording",
       "tags": [],
-      "status": "pending",
-      "progress": 0,
-      "assignees": [],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-17",
       "note": "Do not start until the 1.7.1 app and its legacy homepage modal are no longer in production. 1.7.1 still reads hsbc_202501_event_voucher_id from api/papp/configurable on the legacy homepage, so renaming early would break that path. The current nomad-b PR only adds a source == papp filter and renames the admin label; it keeps the old key on purpose. When Kelvin is ready, hand this back to Workaholic Cheong for the preface-ai work.",
       "order": 70
     }

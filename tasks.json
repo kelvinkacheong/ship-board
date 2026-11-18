@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T17:29:22+08:00",
+  "lastUpdated": "2026-11-18T17:30:42+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1540,7 +1540,7 @@
       "assignees": [],
       "dueDate": null,
       "completedAt": null,
-      "note": "Acceptance: the backend already identifies already_checked_in per the supplied context; the scanner reportedly gives a green/success sound like a fresh check-in. Verify current behavior rather than assume it. Clearly distinguish Already checked in from a fresh success with a different warning visual and sound, ideally including the original check-in time if available, and give no misleading fresh-success feedback. Repeated scans must not cause duplicate attendance side effects; verify existing behavior. Source: https://github.com/preface-ai/preface-nomad-b/pull/5707 and https://github.com/preface-ai/app/pull/874. Future improvement, not a blocker or an addition to the current PRs. Non-goals: no backfill for old bookings, no check-in time gating (early and late arrivals are intentionally allowed), and the old QR route stays supported for now.",
+      "note": "Show a distinct warning visual and sound for an already-checked-in ticket, with the original check-in time if available; verify repeat scans cause no duplicate attendance effects. Future follow-up only: no booking backfill or time gating; keep the legacy QR route.\nSources: Backend https://github.com/preface-ai/preface-nomad-b/pull/5707; app https://github.com/preface-ai/app/pull/874.",
       "order": 72
     },
     {
@@ -1552,7 +1552,7 @@
       "assignees": [],
       "dueDate": null,
       "completedAt": null,
-      "note": "Acceptance: show the student name, event title and date, and fresh or already-checked-in status so staff can recognize tickets for another event. Informative result details only. A pre-confirmation preview or selecting an expected event remain product discussions, not approved required implementation. Source: https://github.com/preface-ai/preface-nomad-b/pull/5707 and https://github.com/preface-ai/app/pull/874. Future improvement, not a blocker or an addition to the current PRs. Non-goals: no backfill for old bookings, no check-in time gating (early and late arrivals are intentionally allowed), and the old QR route stays supported for now.",
+      "note": "Show the student name, event title/date, and fresh/already-checked-in status in the staff scan result. Informative details only\u2014no confirmation preview or expected-event selection; future follow-up, with no booking backfill or time gating and the legacy QR route retained.\nSources: Backend https://github.com/preface-ai/preface-nomad-b/pull/5707; app https://github.com/preface-ai/app/pull/874.",
       "order": 73
     }
   ]

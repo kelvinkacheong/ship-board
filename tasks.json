@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T12:47:42+08:00",
+  "lastUpdated": "2026-11-18T17:26:08+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1548,6 +1548,30 @@
       "completedAt": null,
       "note": null,
       "order": 71
+    },
+    {
+      "id": "task-079",
+      "title": "Improve duplicate QR check-in handling",
+      "tags": [],
+      "status": "pending",
+      "progress": 0,
+      "assignees": [],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "Acceptance: the backend already identifies already_checked_in per the supplied context; the scanner reportedly gives a green/success sound like a fresh check-in. Verify current behavior rather than assume it. Clearly distinguish Already checked in from a fresh success with a different warning visual and sound, ideally including the original check-in time if available, and give no misleading fresh-success feedback. Repeated scans must not cause duplicate attendance side effects; verify existing behavior. Source: https://github.com/preface-ai/preface-nomad-b/pull/5707 and https://github.com/preface-ai/app/pull/874. Future improvement, not a blocker or an addition to the current PRs. Non-goals: no backfill for old bookings, no check-in time gating (early and late arrivals are intentionally allowed), and the old QR route stays supported for now.",
+      "order": 72
+    },
+    {
+      "id": "task-080",
+      "title": "Improve staff/admin QR scan result message and UI",
+      "tags": [],
+      "status": "pending",
+      "progress": 0,
+      "assignees": [],
+      "dueDate": null,
+      "completedAt": null,
+      "note": "Acceptance: show the student name, event title and date, and fresh or already-checked-in status so staff can recognize tickets for another event. Informative result details only. A pre-confirmation preview or selecting an expected event remain product discussions, not approved required implementation. Source: https://github.com/preface-ai/preface-nomad-b/pull/5707 and https://github.com/preface-ai/app/pull/874. Future improvement, not a blocker or an addition to the current PRs. Non-goals: no backfill for old bookings, no check-in time gating (early and late arrivals are intentionally allowed), and the old QR route stays supported for now.",
+      "order": 73
     }
   ]
 }

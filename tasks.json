@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T12:04:01+08:00",
+  "lastUpdated": "2026-11-18T12:47:42+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1528,6 +1528,26 @@
       "completedAt": "2026-11-17",
       "note": "Do not start until the 1.7.1 app and its legacy homepage modal are no longer in production. 1.7.1 still reads hsbc_202501_event_voucher_id from api/papp/configurable on the legacy homepage, so renaming early would break that path. The current nomad-b PR only adds a source == papp filter and renames the admin label; it keeps the old key on purpose. When Kelvin is ready, hand this back to Workaholic Cheong for the preface-ai work.",
       "order": 70
+    },
+    {
+      "id": "task-078",
+      "title": "Meta Week website",
+      "tags": [
+        "Website"
+      ],
+      "status": "in_progress",
+      "progress": 30,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 71
     }
   ]
 }

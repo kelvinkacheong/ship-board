@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T17:26:08+08:00",
+  "lastUpdated": "2026-11-18T17:28:12+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -945,24 +945,6 @@
       "completedAt": "2026-11-06",
       "note": null,
       "order": 40
-    },
-    {
-      "id": "task-048",
-      "title": "Explore password management platform",
-      "tags": [],
-      "status": "assigned",
-      "progress": 0,
-      "assignees": [
-        {
-          "name": "Kelvin",
-          "initial": "K",
-          "color": "#2e90fa"
-        }
-      ],
-      "dueDate": null,
-      "completedAt": null,
-      "note": null,
-      "order": 41
     },
     {
       "id": "task-049",

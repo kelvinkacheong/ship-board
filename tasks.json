@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T17:28:47+08:00",
+  "lastUpdated": "2026-11-18T17:29:22+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1518,7 +1518,7 @@
         "Website"
       ],
       "status": "in_progress",
-      "progress": 30,
+      "progress": 80,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1526,7 +1526,7 @@
           "color": "#2e90fa"
         }
       ],
-      "dueDate": null,
+      "dueDate": "2026-11-20",
       "completedAt": null,
       "note": null,
       "order": 71

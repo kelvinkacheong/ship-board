@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T19:43:52+08:00",
+  "lastUpdated": "2026-11-19T10:38:38+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1632,6 +1632,24 @@
       "completedAt": null,
       "note": "Scope: preface-ai/app login only. Do not change the preface-nomad-b staff cookie session or the public website. Today the app stores a 180-day JWT from devise-jwt (nomad-b) in Expo SecureStore. Replace it with a short-lived access token for API calls and a refresh token kept in SecureStore that can be revoked on logout, password change, or a lost device. Customer Portal still uses a JWT in localStorage, but this task is for the app unless Kelvin says otherwise.",
       "order": 76
+    },
+    {
+      "id": "task-084",
+      "title": "Set ChatGPT models as fallback for Claude (B2C)",
+      "tags": [],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 77
     }
   ]
 }

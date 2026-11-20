@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T09:50:44+08:00",
+  "lastUpdated": "2026-11-20T11:46:21+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1637,8 +1637,8 @@
       "id": "task-084",
       "title": "Set ChatGPT models as fallback for Claude (B2C)",
       "tags": [],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -1647,7 +1647,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-20",
       "note": null,
       "order": 77
     },

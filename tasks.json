@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T11:46:21+08:00",
+  "lastUpdated": "2026-11-20T11:55:16+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1483,9 +1483,9 @@
       "progress": 0,
       "assignees": [
         {
-          "name": "Maya",
-          "initial": "M",
-          "color": "#b692f6"
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
         }
       ],
       "dueDate": null,

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T17:17:03+08:00",
+  "lastUpdated": "2026-11-20T18:29:58+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1688,6 +1688,26 @@
       "completedAt": null,
       "note": null,
       "order": 79
+    },
+    {
+      "id": "task-087",
+      "title": "Fix CBRE users not seeing Rise Cafe on first login",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-23",
+      "completedAt": null,
+      "note": null,
+      "order": 80
     }
   ]
 }

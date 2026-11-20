@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T11:55:16+08:00",
+  "lastUpdated": "2026-11-20T16:20:33+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1668,6 +1668,26 @@
       "completedAt": null,
       "note": null,
       "order": 78
+    },
+    {
+      "id": "task-086",
+      "title": "Enable in-app monthly member purchase",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 79
     }
   ]
 }

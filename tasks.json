@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T18:29:58+08:00",
+  "lastUpdated": "2026-11-23T09:49:40+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1479,8 +1479,8 @@
       "tags": [
         "CBRE"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 50,
       "assignees": [
         {
           "name": "Rachel",

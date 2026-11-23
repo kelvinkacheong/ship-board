@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T10:16:11+08:00",
+  "lastUpdated": "2026-11-23T15:41:53+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1048,8 +1048,8 @@
       "tags": [
         "Portal"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1058,7 +1058,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-23",
       "note": null,
       "order": 47
     },
@@ -1695,8 +1695,8 @@
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1705,7 +1705,7 @@
         }
       ],
       "dueDate": "2026-11-23",
-      "completedAt": null,
+      "completedAt": "2026-11-23",
       "note": null,
       "order": 80
     }

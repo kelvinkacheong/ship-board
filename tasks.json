@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T09:49:40+08:00",
+  "lastUpdated": "2026-11-23T10:15:44+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1655,8 +1655,8 @@
       "id": "task-085",
       "title": "Discover Obsidian / Notion connection use cases with Grok Bot",
       "tags": [],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1665,7 +1665,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-23",
       "note": null,
       "order": 78
     },

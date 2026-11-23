@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T16:47:38+08:00",
+  "lastUpdated": "2026-11-23T18:32:33+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1599,8 +1599,8 @@
       "id": "task-082",
       "title": "Mailer for Meta Week webpage after enrollment",
       "tags": [],
-      "status": "assigned",
-      "progress": 0,
+      "status": "pending_further_actions",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T10:15:44+08:00",
+  "lastUpdated": "2026-11-23T10:16:11+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1571,8 +1571,8 @@
       "id": "task-081",
       "title": "Submit EAS build 1.8.0",
       "tags": [],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1591,7 +1591,7 @@
         }
       ],
       "dueDate": "2026-11-20",
-      "completedAt": null,
+      "completedAt": "2026-11-23",
       "note": null,
       "order": 74
     },

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24T09:53:04+08:00",
+  "lastUpdated": "2026-11-24T10:30:33+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -872,7 +872,7 @@
       "tags": [
         "App"
       ],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -882,7 +882,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-24",
       "note": "Play flagged DEX below threshold \u00b7 Obfuscation 2% (under 25% may hurt visibility/publishing) \u00b7 later build, not current \u00b7 https://developer.android.com/topic/performance/vitals/code-optimization",
       "order": 37
     },
@@ -1599,7 +1599,7 @@
       "id": "task-082",
       "title": "Mailer for Meta Week webpage after enrollment",
       "tags": [],
-      "status": "pending_further_actions",
+      "status": "shipped",
       "progress": 100,
       "assignees": [
         {
@@ -1609,7 +1609,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-24",
       "note": null,
       "order": 75
     },

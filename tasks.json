@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T18:32:33+08:00",
+  "lastUpdated": "2026-11-24T09:53:04+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1708,6 +1708,46 @@
       "completedAt": "2026-11-23",
       "note": null,
       "order": 80
+    },
+    {
+      "id": "task-088",
+      "title": "Should set password when creating admin",
+      "tags": [
+        "CBRE"
+      ],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": "2026-11-23",
+      "note": null,
+      "order": 81
+    },
+    {
+      "id": "task-089",
+      "title": "Bulk create should include setting password for admin",
+      "tags": [
+        "CBRE"
+      ],
+      "status": "in_progress",
+      "progress": 20,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 82
     }
   ]
 }

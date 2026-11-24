@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24T14:29:45+08:00",
+  "lastUpdated": "2026-11-24T17:04:35+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1792,6 +1792,28 @@
       "completedAt": null,
       "note": null,
       "order": 85
+    },
+    {
+      "id": "task-093",
+      "title": "Lending service",
+      "tags": [
+        "App",
+        "Backend",
+        "CBRE"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 86
     }
   ]
 }

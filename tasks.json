@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T17:05:50+08:00",
+  "lastUpdated": "2026-11-25T17:30:30+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1517,8 +1517,8 @@
       "tags": [
         "Website"
       ],
-      "status": "in_progress",
-      "progress": 80,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1527,7 +1527,7 @@
         }
       ],
       "dueDate": "2026-11-20",
-      "completedAt": null,
+      "completedAt": "2026-11-24",
       "note": null,
       "order": 71
     },
@@ -1735,8 +1735,8 @@
       "tags": [
         "CBRE"
       ],
-      "status": "in_progress",
-      "progress": 20,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Rachel",
@@ -1745,7 +1745,7 @@
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-24",
       "note": null,
       "order": 82
     },

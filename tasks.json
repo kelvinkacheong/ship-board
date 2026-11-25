@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24T17:04:35+08:00",
+  "lastUpdated": "2026-11-25T14:01:04+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1814,6 +1814,18 @@
       "completedAt": null,
       "note": null,
       "order": 86
+    },
+    {
+      "id": "task-094",
+      "title": "Retire certificate legacy feature",
+      "tags": [],
+      "status": "pending",
+      "progress": 0,
+      "assignees": [],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 87
     }
   ]
 }

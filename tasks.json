@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T16:58:31+08:00",
+  "lastUpdated": "2026-11-25T17:05:50+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1826,6 +1826,27 @@
       "completedAt": null,
       "note": null,
       "order": 87
+    },
+    {
+      "id": "task-095",
+      "title": "Enhance notification mechanism",
+      "tags": [
+        "App",
+        "Portal"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 88
     }
   ]
 }

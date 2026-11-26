@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T12:52:33+08:00",
+  "lastUpdated": "2026-11-26T13:17:20+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1873,6 +1873,24 @@
       "completedAt": null,
       "note": null,
       "order": 89
+    },
+    {
+      "id": "task-097",
+      "title": "Build Metabase dashboard for Meta Week",
+      "tags": [],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-11-26",
+      "completedAt": null,
+      "note": null,
+      "order": 90
     }
   ]
 }

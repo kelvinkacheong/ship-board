@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T18:50:07+08:00",
+  "lastUpdated": "2026-11-26T19:29:03+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1935,6 +1935,66 @@
       "completedAt": "2026-11-26",
       "note": null,
       "order": 92
+    },
+    {
+      "id": "task-100",
+      "title": "Update T&C",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-27",
+      "completedAt": null,
+      "note": null,
+      "order": 93
+    },
+    {
+      "id": "task-101",
+      "title": "Urgent Insead Website Change",
+      "tags": [
+        "Website"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": "2026-11-27",
+      "completedAt": null,
+      "note": null,
+      "order": 94
+    },
+    {
+      "id": "task-102",
+      "title": "Add \u201cguaranteed to run\u201d text on time slot",
+      "tags": [
+        "App"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
+      "dueDate": "2026-11-27",
+      "completedAt": null,
+      "note": null,
+      "order": 95
     }
   ]
 }

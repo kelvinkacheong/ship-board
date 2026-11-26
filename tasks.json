@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T16:13:12+08:00",
+  "lastUpdated": "2026-11-26T16:19:17+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1911,6 +1911,18 @@
       "completedAt": null,
       "note": null,
       "order": 91
+    },
+    {
+      "id": "task-099",
+      "title": "Course name bigger in happening page, and expand the \"more actions\" button",
+      "tags": [],
+      "status": "pending",
+      "progress": 0,
+      "assignees": [],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 92
     }
   ]
 }

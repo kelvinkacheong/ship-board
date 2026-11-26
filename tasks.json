@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T17:30:30+08:00",
+  "lastUpdated": "2026-11-26T11:07:16+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1819,11 +1819,17 @@
       "id": "task-094",
       "title": "Retire certificate legacy feature",
       "tags": [],
-      "status": "pending",
-      "progress": 0,
-      "assignees": [],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-25",
       "note": null,
       "order": 87
     },

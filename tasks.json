@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T16:19:17+08:00",
+  "lastUpdated": "2026-11-26T18:50:07+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1785,11 +1785,17 @@
         "Backend",
         "Portal"
       ],
-      "status": "pending",
-      "progress": 0,
-      "assignees": [],
+      "status": "pending_further_actions",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
+        }
+      ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-26",
       "note": null,
       "order": 85
     },
@@ -1878,17 +1884,17 @@
       "id": "task-097",
       "title": "Build Metabase dashboard for Meta Week",
       "tags": [],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
-          "name": "Maya",
-          "initial": "M",
-          "color": "#b692f6"
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
         }
       ],
       "dueDate": "2026-11-26",
-      "completedAt": null,
+      "completedAt": "2026-11-26",
       "note": null,
       "order": 90
     },
@@ -1916,11 +1922,17 @@
       "id": "task-099",
       "title": "Course name bigger in happening page, and expand the \"more actions\" button",
       "tags": [],
-      "status": "pending",
-      "progress": 0,
-      "assignees": [],
+      "status": "shipped",
+      "progress": 100,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-26",
       "note": null,
       "order": 92
     }

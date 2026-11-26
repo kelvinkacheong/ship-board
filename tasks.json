@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T13:17:20+08:00",
+  "lastUpdated": "2026-11-26T16:13:12+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1891,6 +1891,26 @@
       "completedAt": null,
       "note": null,
       "order": 90
+    },
+    {
+      "id": "task-098",
+      "title": "Reset password mailer",
+      "tags": [
+        "Backend"
+      ],
+      "status": "assigned",
+      "progress": 0,
+      "assignees": [
+        {
+          "name": "Kelvin",
+          "initial": "K",
+          "color": "#2e90fa"
+        }
+      ],
+      "dueDate": null,
+      "completedAt": null,
+      "note": null,
+      "order": 91
     }
   ]
 }

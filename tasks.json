@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T15:25:21+08:00",
+  "lastUpdated": "2026-11-27T18:05:52+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1846,13 +1846,13 @@
         "App",
         "Portal"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "in_progress",
+      "progress": 80,
       "assignees": [
         {
-          "name": "Kelvin",
-          "initial": "K",
-          "color": "#2e90fa"
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
         }
       ],
       "dueDate": null,

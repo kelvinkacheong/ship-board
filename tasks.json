@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T15:18:24+08:00",
+  "lastUpdated": "2026-11-27T15:25:21+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1995,6 +1995,24 @@
       "completedAt": "2026-11-27",
       "note": null,
       "order": 95
+    },
+    {
+      "id": "task-103",
+      "title": "CBRE SOP and .md Source of Truth",
+      "tags": [],
+      "status": "in_progress",
+      "progress": 80,
+      "assignees": [
+        {
+          "name": "Rachel",
+          "initial": "R",
+          "color": "#12b76a"
+        }
+      ],
+      "dueDate": "2026-11-27",
+      "completedAt": null,
+      "note": null,
+      "order": 96
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T10:07:55+08:00",
+  "lastUpdated": "2026-11-27T10:49:15+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1942,8 +1942,8 @@
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1952,7 +1952,7 @@
         }
       ],
       "dueDate": "2026-11-27",
-      "completedAt": null,
+      "completedAt": "2026-11-27",
       "note": null,
       "order": 93
     },
@@ -1982,8 +1982,8 @@
       "tags": [
         "App"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Maya",
@@ -1992,7 +1992,7 @@
         }
       ],
       "dueDate": "2026-11-27",
-      "completedAt": null,
+      "completedAt": "2026-11-27",
       "note": null,
       "order": 95
     }

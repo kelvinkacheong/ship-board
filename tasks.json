@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T10:49:15+08:00",
+  "lastUpdated": "2026-11-27T12:23:55+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1904,17 +1904,17 @@
       "tags": [
         "Backend"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
-          "name": "Kelvin",
-          "initial": "K",
-          "color": "#2e90fa"
+          "name": "Maya",
+          "initial": "M",
+          "color": "#b692f6"
         }
       ],
       "dueDate": null,
-      "completedAt": null,
+      "completedAt": "2026-11-27",
       "note": null,
       "order": 91
     },

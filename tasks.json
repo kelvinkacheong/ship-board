@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T12:23:55+08:00",
+  "lastUpdated": "2026-11-27T15:18:24+08:00",
   "tasks": [
     {
       "id": "task-001",
@@ -1962,8 +1962,8 @@
       "tags": [
         "Website"
       ],
-      "status": "assigned",
-      "progress": 0,
+      "status": "shipped",
+      "progress": 100,
       "assignees": [
         {
           "name": "Kelvin",
@@ -1972,7 +1972,7 @@
         }
       ],
       "dueDate": "2026-11-27",
-      "completedAt": null,
+      "completedAt": "2026-11-27",
       "note": null,
       "order": 94
     },
